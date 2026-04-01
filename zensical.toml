@@ -6,7 +6,7 @@ site_author = "eggzec"
 site_url = "https://eggzec.github.io/"
 
 copyright = """
-Copyright &copy; 2026 eggzec contributors
+Copyright &copy; 2026 eggzec
 """
 
 nav = [
