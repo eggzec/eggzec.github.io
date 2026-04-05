@@ -67,12 +67,15 @@ All packages enforce:
 |---------|--------|-----|
 | soerp3 | [eggzec/soerp3](https://github.com/eggzec/soerp3) | eggzec |
 | sparse_grid | [eggzec/sparse_grid](https://github.com/eggzec/sparse_grid) | eggzec |
+| kronrod | [eggzec/kronrod](https://github.com/eggzec/kronrod) | eggzec |
 | polpack | [eggzec/polpack](https://github.com/eggzec/polpack) | eggzec |
+| cordic | [eggzec/cordic](https://github.com/eggzec/cordic) | eggzec |
 | smolpack | [eggzec/smolpack](https://github.com/eggzec/smolpack) | eggzec |
 | sdepack | [eggzec/sdepack](https://github.com/eggzec/sdepack) | eggzec |
 | deltaFlow | [eggzec/deltaFlow](https://github.com/eggzec/deltaFlow) | eggzec |
 | NULAPACK | [nulapack/nulapack](https://github.com/nulapack/nulapack) | nulapack |
 | pydoe | [pydoe/pydoe](https://github.com/pydoe/pydoe) | pydoe |
+| JavaDOE | [Java-DOE/JavaDOE](https://github.com/Java-DOE/JavaDOE) | Java-DOE |
 | permit | [eggzec/permit](https://github.com/eggzec/permit) | eggzec |
 | qqq | [eggzec/qqq](https://github.com/eggzec/qqq) | eggzec |
 
