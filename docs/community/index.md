@@ -12,7 +12,7 @@ eggzec is an open community. Everything we build is developed in the open on Git
 
 <div class="grid cards" markdown>
 
--   **Saud Zahir**
+-   <span style="display:flex;align-items:center;gap:12px;"><img src="../assets/images/saud.png" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>Saud Zahir</strong></span>
 
     ---
 
@@ -20,7 +20,7 @@ eggzec is an open community. Everything we build is developed in the open on Git
 
     [:fontawesome-brands-github: saudzahirr](https://github.com/saudzahirr)
 
--   **M Laraib Ali**
+-   <span style="display:flex;align-items:center;gap:12px;"><img src="../assets/images/laraib.jpg" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>M Laraib Ali</strong></span>
 
     ---
 
@@ -28,21 +28,13 @@ eggzec is an open community. Everything we build is developed in the open on Git
 
     [:fontawesome-brands-github: laraibg786](https://github.com/laraibg786)
 
--   **nomus**
+-   <span style="display:flex;align-items:center;gap:12px;"><img src="../assets/images/noor.jpg" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>nomus</strong></span>
 
     ---
 
     Contributor and member of the eggzec organisation.
 
     [:fontawesome-brands-github: Noor-Mustafa123](https://github.com/Noor-Mustafa123)
-
--   **eggzec-tech-usr**
-
-    ---
-
-    Technical automation user for CI/CD workflows and release pipelines.
-
-    [:fontawesome-brands-github: eggzec-tech-usr](https://github.com/eggzec-tech-usr)
 
 </div>
 
