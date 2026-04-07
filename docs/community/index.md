@@ -28,7 +28,7 @@ eggzec is an open community. Everything we build is developed in the open on Git
 
     [:fontawesome-brands-github: laraibg786](https://github.com/laraibg786)
 
--   <span style="display:flex;align-items:center;gap:12px;"><img src="../assets/images/noor.jpg" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>nomus</strong></span>
+-   <span style="display:flex;align-items:center;gap:12px;"><img src="../assets/images/noor.jpg" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>Noor Mustafa</strong></span>
 
     ---
 

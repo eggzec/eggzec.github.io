@@ -205,7 +205,7 @@ NULAPACK is a lightweight, high-performance numerical linear algebra library. Co
 |---|---|
 | **Repository** | [github.com/eggzec/deltaFlow](https://github.com/eggzec/deltaFlow) |
 | **Documentation** | [eggzec.github.io/deltaFlow](https://eggzec.github.io/deltaFlow/) |
-| **License** | Open Source |
+| **License** | GPL-3.0 |
 
 ---
 
@@ -243,7 +243,7 @@ Supported design families:
 | | |
 |---|---|
 | **Repository** | [github.com/Java-DOE/JavaDOE](https://github.com/Java-DOE/JavaDOE) |
-| **License** | Open Source |
+| **License** | Apache-2.0 |
 
 ---
 
@@ -282,6 +282,16 @@ Early-stage Python package currently in active development.
 Early-stage Python package currently in active development.
 
 [:fontawesome-brands-github: github.com/eggzec/pydanticInput](https://github.com/eggzec/pydanticInput)
+
+---
+
+### scikit-ode
+
+**Differential Equation Solver for Python**
+
+Early-stage Python package currently in active development.
+
+[:fontawesome-brands-github: github.com/eggzec/scikit-ode](https://github.com/eggzec/scikit-ode)
 
 ---
 
