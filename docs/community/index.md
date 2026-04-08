@@ -12,7 +12,7 @@ eggzec is an open community. Everything we build is developed in the open on Git
 
 <div class="grid cards" markdown>
 
--   <span style="display:flex;align-items:center;gap:12px;"><img src="../assets/images/saud.png" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>Saud Zahir</strong></span>
+-   <span style="display:flex;align-items:center;gap:12px;"><img src="https://avatars.githubusercontent.com/u/76210541?v=4" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>Saud Zahir</strong></span>
 
     ---
 
@@ -20,7 +20,7 @@ eggzec is an open community. Everything we build is developed in the open on Git
 
     [:fontawesome-brands-github: saudzahirr](https://github.com/saudzahirr)
 
--   <span style="display:flex;align-items:center;gap:12px;"><img src="../assets/images/laraib.jpg" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>M Laraib Ali</strong></span>
+-   <span style="display:flex;align-items:center;gap:12px;"><img src="https://avatars.githubusercontent.com/u/179373255?v=4" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>M Laraib Ali</strong></span>
 
     ---
 
@@ -28,7 +28,7 @@ eggzec is an open community. Everything we build is developed in the open on Git
 
     [:fontawesome-brands-github: laraibg786](https://github.com/laraibg786)
 
--   <span style="display:flex;align-items:center;gap:12px;"><img src="../assets/images/noor.jpg" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>Noor Mustafa</strong></span>
+-   <span style="display:flex;align-items:center;gap:12px;"><img src="https://avatars.githubusercontent.com/u/77202386?v=4" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>Noor Mustafa</strong></span>
 
     ---
 
