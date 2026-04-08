@@ -15,12 +15,18 @@ nav = [
   { "Community" = "community/index.md"    },
 ]
 
+extra_javascript = [
+  "assets/javascripts/mathjax.js",
+  "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js",
+]
+
 # ----------------------------------------------------------------------------
 # Theme
 # ----------------------------------------------------------------------------
 [project.theme]
 
 language = "en"
+logo = "assets/images/logo.png"
 
 features = [
     "announce.dismiss",
@@ -43,7 +49,6 @@ features = [
 ]
 
 [project.theme.icon]
-logo = "lucide/atom"
 
 # ----------------------------------------------------------------------------
 # Color palette

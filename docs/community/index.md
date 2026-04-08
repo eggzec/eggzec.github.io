@@ -12,7 +12,7 @@ eggzec is an open community. Everything we build is developed in the open on Git
 
 <div class="grid cards" markdown>
 
--   **Saud Zahir**
+-   <span style="display:flex;align-items:center;gap:12px;"><img src="https://avatars.githubusercontent.com/u/76210541?v=4" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>Saud Zahir</strong></span>
 
     ---
 
@@ -20,7 +20,7 @@ eggzec is an open community. Everything we build is developed in the open on Git
 
     [:fontawesome-brands-github: saudzahirr](https://github.com/saudzahirr)
 
--   **M Laraib Ali**
+-   <span style="display:flex;align-items:center;gap:12px;"><img src="https://avatars.githubusercontent.com/u/179373255?v=4" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>M Laraib Ali</strong></span>
 
     ---
 
@@ -28,21 +28,13 @@ eggzec is an open community. Everything we build is developed in the open on Git
 
     [:fontawesome-brands-github: laraibg786](https://github.com/laraibg786)
 
--   **nomus**
+-   <span style="display:flex;align-items:center;gap:12px;"><img src="https://avatars.githubusercontent.com/u/77202386?v=4" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>Noor Mustafa</strong></span>
 
     ---
 
     Contributor and member of the eggzec organisation.
 
     [:fontawesome-brands-github: Noor-Mustafa123](https://github.com/Noor-Mustafa123)
-
--   **eggzec-tech-usr**
-
-    ---
-
-    Technical automation user for CI/CD workflows and release pipelines.
-
-    [:fontawesome-brands-github: eggzec-tech-usr](https://github.com/eggzec-tech-usr)
 
 </div>
 
@@ -75,12 +67,15 @@ All packages enforce:
 |---------|--------|-----|
 | soerp3 | [eggzec/soerp3](https://github.com/eggzec/soerp3) | eggzec |
 | sparse_grid | [eggzec/sparse_grid](https://github.com/eggzec/sparse_grid) | eggzec |
+| kronrod | [eggzec/kronrod](https://github.com/eggzec/kronrod) | eggzec |
 | polpack | [eggzec/polpack](https://github.com/eggzec/polpack) | eggzec |
+| cordic | [eggzec/cordic](https://github.com/eggzec/cordic) | eggzec |
 | smolpack | [eggzec/smolpack](https://github.com/eggzec/smolpack) | eggzec |
 | sdepack | [eggzec/sdepack](https://github.com/eggzec/sdepack) | eggzec |
 | deltaFlow | [eggzec/deltaFlow](https://github.com/eggzec/deltaFlow) | eggzec |
 | NULAPACK | [nulapack/nulapack](https://github.com/nulapack/nulapack) | nulapack |
 | pydoe | [pydoe/pydoe](https://github.com/pydoe/pydoe) | pydoe |
+| JavaDOE | [Java-DOE/JavaDOE](https://github.com/Java-DOE/JavaDOE) | Java-DOE |
 | permit | [eggzec/permit](https://github.com/eggzec/permit) | eggzec |
 | qqq | [eggzec/qqq](https://github.com/eggzec/qqq) | eggzec |
 

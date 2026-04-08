@@ -68,6 +68,20 @@ print(sg.eval_funct([0.25, 0.75]))
 
 ---
 
+### kronrod
+
+**Gauss-Kronrod Quadrature Rules for Python**
+
+`kronrod` computes abscissas and weights of Gauss-Kronrod quadrature rules. It optimally adds N+1 points to an N-point Gauss rule to produce a (2N+1)-point Gauss-Kronrod rule for numerical integration, allowing function values from the Gauss rule to be reused.
+
+| | |
+|---|---|
+| **Repository** | [github.com/eggzec/kronrod](https://github.com/eggzec/kronrod) |
+| **PyPI** | `pip install kronrod` |
+| **License** | LGPL-2.1 |
+
+---
+
 ### smolpack
 
 **Multidimensional Quadrature Using Sparse Grids for Python**
@@ -150,6 +164,20 @@ print(f"Bell numbers: {bell}")
 
 ---
 
+### cordic
+
+**CORDIC Algorithm for Python**
+
+`cordic` is a high-performance Python library implementing the CORDIC (COordinate Rotation DIgital Computer) algorithm for evaluating trigonometric, hyperbolic, exponential, logarithmic, and root functions using only shifts, additions, and a small look-up table. The core is written in C.
+
+| | |
+|---|---|
+| **Repository** | [github.com/eggzec/cordic](https://github.com/eggzec/cordic) |
+| **PyPI** | `pip install cordic` |
+| **License** | LGPL-2.1 |
+
+---
+
 ### NULAPACK
 
 **NUmerical Linear Algebra PACKage**
@@ -177,7 +205,7 @@ NULAPACK is a lightweight, high-performance numerical linear algebra library. Co
 |---|---|
 | **Repository** | [github.com/eggzec/deltaFlow](https://github.com/eggzec/deltaFlow) |
 | **Documentation** | [eggzec.github.io/deltaFlow](https://eggzec.github.io/deltaFlow/) |
-| **License** | Open Source |
+| **License** | GPL-3.0 |
 
 ---
 
@@ -206,6 +234,19 @@ Supported design families:
 
 ---
 
+### JavaDOE
+
+**Design of Experiments Library for Java**
+
+`JavaDOE` is a comprehensive Java library for Design of Experiments (DOE) algorithms, including Box–Behnken, Central Composite, Factorial, and other DOE methods. Developed under the [Java-DOE](https://github.com/Java-DOE) organisation, maintained by eggzec contributors.
+
+| | |
+|---|---|
+| **Repository** | [github.com/Java-DOE/JavaDOE](https://github.com/Java-DOE/JavaDOE) |
+| **License** | Apache-2.0 |
+
+---
+
 ## In Progress
 
 ### permit
@@ -225,3 +266,37 @@ Supported design families:
 `qqq` is a web interface for Sun Grid Engine (SGE) that visualises cluster jobs and allows basic job management. Useful for HPC users who prefer a browser-based view over the `qstat` command line.
 
 [:fontawesome-brands-github: github.com/eggzec/qqq](https://github.com/eggzec/qqq)
+
+---
+
+### pyact
+
+Early-stage Python package currently in active development.
+
+[:fontawesome-brands-github: github.com/eggzec/pyact](https://github.com/eggzec/pyact)
+
+---
+
+### pydanticInput
+
+Early-stage Python package currently in active development.
+
+[:fontawesome-brands-github: github.com/eggzec/pydanticInput](https://github.com/eggzec/pydanticInput)
+
+---
+
+### scikit-ode
+
+**Differential Equation Solver for Python**
+
+Early-stage Python package currently in active development.
+
+[:fontawesome-brands-github: github.com/eggzec/scikit-ode](https://github.com/eggzec/scikit-ode)
+
+---
+
+### codeCurfew
+
+Early-stage project currently in active development.
+
+[:fontawesome-brands-github: github.com/eggzec/codeCurfew](https://github.com/eggzec/codeCurfew)
