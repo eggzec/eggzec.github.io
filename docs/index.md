@@ -1,128 +1,71 @@
 ---
-icon: lucide/home
+icon: fontawesome/solid/house
 ---
 
 # eggzec
 
-**Science & Computing**
+**Science + Computing**
 
 ---
 
-We are a community of scientists and engineers building high-quality, open-source scientific Python packages. Our tools are designed to bring production-grade numerical methods, mathematical routines, and engineering utilities directly into Python — with clean APIs, rigorous testing, and thorough documentation.
+A community focused on open source high-performance scientific computing and modern software development.
 
 <div class="grid cards" markdown>
 
--   :lucide-sigma: **soerp3**
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="assets/images/pyswarm.ico" style="width:26px;height:26px;object-fit:contain;"><strong>pyswarm</strong></span>
 
     ---
 
-    Second-order error propagation (uncertainty analysis) for Python.
-    Transparently tracks uncertainty through mathematical calculations using
-    the first eight statistical moments.
+    Particle Swarm Optimization for Python.
 
-    **License:** BSD-3-Clause &nbsp;|&nbsp; **PyPI:** `pip install soerp3`
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/pyswarm/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/pyswarm)
 
-    [:octicons-arrow-right-24: Documentation](https://eggzec.github.io/soerp3/)
-    &nbsp; [:fontawesome-brands-github: Source](https://github.com/eggzec/soerp3)
-
--   :lucide-grid-2x2: **sparse\_grid**
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="assets/images/pydoe.svg" style="width:26px;height:26px;object-fit:contain;"><strong>pydoe</strong></span>
 
     ---
 
-    Pure-Python implementation of regular sparse grids over box domains.
-    Provides hierarchical index generation, coefficient conversion, and
-    fast function evaluation using hat basis functions.
+    Design of Experiments for Python.
 
-    **License:** BSD-3-Clause &nbsp;|&nbsp; **PyPI:** `pip install sparse-grid`
+    [:fontawesome-solid-book: Documentation](https://pydoe.github.io/pydoe/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/pydoe/pydoe)
 
-    [:octicons-arrow-right-24: Documentation](https://eggzec.github.io/sparse_grid/)
-    &nbsp; [:fontawesome-brands-github: Source](https://github.com/eggzec/sparse_grid)
-
--   :lucide-function-square: **polpack**
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="assets/images/mcerp.ico" style="width:26px;height:26px;object-fit:contain;"><strong>mcerp</strong></span>
 
     ---
 
-    Special functions and recursively-defined polynomial families for Python.
-    Fortran-backed routines for Bernoulli, Chebyshev, Gegenbauer, Hermite,
-    Laguerre, Legendre polynomials, and more.
+    Monte Carlo error propagation for uncertainty analysis in Python.
 
-    **License:** LGPL-2.1 &nbsp;|&nbsp; **PyPI:** `pip install polpack`
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/mcerp/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/mcerp)
 
-    [:octicons-arrow-right-24: Documentation](https://eggzec.github.io/polpack/)
-    &nbsp; [:fontawesome-brands-github: Source](https://github.com/eggzec/polpack)
-
--   :lucide-calculator: **smolpack**
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="assets/images/SOERP.svg" style="width:26px;height:26px;object-fit:contain;"><strong>soerp</strong></span>
 
     ---
 
-    Multidimensional quadrature over the unit hypercube using Smolyak's
-    sparse-grid algorithm with Clenshaw–Curtis rules. Delayed and standard
-    variants provided.
+    Second-order error propagation for uncertainty analysis in Python.
 
-    **License:** LGPL-2.1 &nbsp;|&nbsp; **PyPI:** `pip install smolpack`
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/soerp/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/soerp)
 
-    [:octicons-arrow-right-24: Documentation](https://eggzec.github.io/smolpack/)
-    &nbsp; [:fontawesome-brands-github: Source](https://github.com/eggzec/smolpack)
-
--   :lucide-trending-up: **sdepack**
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="assets/images/ad.ico" style="width:26px;height:26px;object-fit:contain;"><strong>ad</strong></span>
 
     ---
 
-    Runge–Kutta numerical integration of stochastic differential equations.
-    Solvers from first-order Euler–Maruyama to fourth-order stochastic RK
-    methods using Kasdin coefficients.
+    First- and second-order automatic differentiation for Python.
 
-    **License:** MIT &nbsp;|&nbsp; **PyPI:** `pip install sdepack`
+    [:fontawesome-solid-book: Documentation](https://pythonhosted.org/ad/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/ad)
 
-    [:octicons-arrow-right-24: Documentation](https://eggzec.github.io/sdepack/)
-    &nbsp; [:fontawesome-brands-github: Source](https://github.com/eggzec/sdepack)
-
--   :lucide-zap: **deltaFlow**
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="assets/images/qtop.ico" style="width:26px;height:26px;object-fit:contain;"><strong>qtop</strong></span>
 
     ---
 
-    Power system analysis tool for steady-state and dynamic simulation of
-    electrical networks. Built for engineers and researchers working on
-    grid analysis and planning.
+    HPC queue and cluster monitor.
 
-    **License:** Open Source
-
-    [:octicons-arrow-right-24: Documentation](https://eggzec.github.io/deltaFlow/)
-    &nbsp; [:fontawesome-brands-github: Source](https://github.com/eggzec/deltaFlow)
-
--   :lucide-table: **NULAPACK**
-
-    ---
-
-    NUmerical Linear Algebra PACKage — lightweight, high-performance routines
-    implemented in Fortran with Python and C++ interfaces. Developed under
-    the `nulapack` organisation.
-
-    **License:** GPL-3.0 &nbsp;|&nbsp; **PyPI:** `pip install nulapack`
-
-    [:octicons-arrow-right-24: Documentation](https://nulapack.github.io/NULAPACK/)
-    &nbsp; [:fontawesome-brands-github: Source](https://github.com/nulapack/nulapack)
-
--   :lucide-flask-conical: **pydoe**
-
-    ---
-
-    Design of Experiments for Python — full-factorial, fractional-factorial,
-    Plackett–Burman, Box–Behnken, central composite, and Latin Hypercube
-    designs. Developed under the `pydoe` organisation.
-
-    **License:** BSD-3-Clause &nbsp;|&nbsp; **PyPI:** `pip install pydoe`
-
-    [:octicons-arrow-right-24: Documentation](https://pydoe.github.io/pydoe/)
-    &nbsp; [:fontawesome-brands-github: Source](https://github.com/pydoe/pydoe)
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/qtop/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/qtop)
 
 </div>
 
 ---
-
-## Get Involved
-
-All packages are open source and openly developed on GitHub. We welcome bug reports, feature requests, and pull requests.
-
-- Browse our repositories: [:fontawesome-brands-github: github.com/eggzec](https://github.com/eggzec)
-- See the [Community](community/index.md) page to learn about the team and how to contribute.

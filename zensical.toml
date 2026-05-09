@@ -12,12 +12,26 @@ Copyright &copy; 2026 eggzec
 nav = [
   { "Home"      = "index.md"              },
   { "Projects"  = "projects/index.md"     },
-  { "Community" = "community/index.md"    },
+  { "Community" = [
+      { "Overview" = "community/index.md" },
+      { "M. Saud Zahir" = "community/saud.md" },
+      { "M. Laraib Ali" = "community/laraib.md" },
+      { "Noor Mustafa" = "community/noor.md" },
+    ]
+  },
+  { "How We Build" = "how-we-build.md"    },
+  { "Contributing" = "contributing.md"    },
+  { "Contact"   = "contact.md"            },
+  { "Blogs"     = "blogs/index.md"        },
 ]
 
 extra_javascript = [
   "assets/javascripts/mathjax.js",
   "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js",
+]
+
+extra_css = [
+  "assets/stylesheets/extra.css",
 ]
 
 # ----------------------------------------------------------------------------
@@ -27,6 +41,7 @@ extra_javascript = [
 
 language = "en"
 logo = "assets/images/logo.png"
+favicon = "assets/images/logo.png"
 
 features = [
     "announce.dismiss",
@@ -40,7 +55,6 @@ features = [
     "navigation.indexes",
     "navigation.instant",
     "navigation.instant.prefetch",
-    "navigation.path",
     "navigation.sections",
     "navigation.tabs",
     "navigation.top",
@@ -54,14 +68,7 @@ features = [
 # Color palette
 # ----------------------------------------------------------------------------
 [[project.theme.palette]]
-scheme     = "default"
-toggle.icon = "lucide/sun"
-toggle.name = "Switch to dark mode"
-
-[[project.theme.palette]]
-scheme     = "slate"
-toggle.icon = "lucide/moon"
-toggle.name = "Switch to light mode"
+scheme = "default"
 
 # ----------------------------------------------------------------------------
 # Social links

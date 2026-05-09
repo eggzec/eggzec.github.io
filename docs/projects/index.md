@@ -1,302 +1,223 @@
 ---
-icon: lucide/package
+icon: fontawesome/solid/diagram-project
 ---
 
 # Projects
 
-All packages are open source, available on PyPI, and actively maintained. They are designed to compose well together — for example, `sparse_grid` and `smolpack` share the same sparse-grid foundations, `polpack` feeds quadrature rules used by `smolpack`, and `soerp3` can build on any of the numerical outputs.
+<div class="grid cards" markdown>
 
----
+-   :fontawesome-brands-github: **bb**
 
-## Numerical Analysis
+    ---
 
-### soerp3
+    A Bitbucket CLI and SDK client.
 
-**Second Order Error Propagation for Python**
+    [:fontawesome-brands-github: GitHub](https://github.com/eggzec/bb)
 
-`soerp3` is the Python implementation of the original Fortran code `SOERP` by N. D. Cox. It applies a second-order analysis to error propagation (uncertainty analysis), allowing you to transparently track the effects of uncertainty through mathematical calculations. The result of all calculations produces a *mean*, *variance*, and *standardized skewness and kurtosis* coefficients.
+-   :fontawesome-brands-github: **vatic**
 
-The package requires the **first eight statistical moments** of the input distributions (mean, variance, and standardized 3rd–8th moments). These can be supplied manually, or generated using built-in constructors or `scipy.stats` distributions.
+    ---
 
-| | |
-|---|---|
-| **Repository** | [github.com/eggzec/soerp3](https://github.com/eggzec/soerp3) |
-| **Documentation** | [eggzec.github.io/soerp3](https://eggzec.github.io/soerp3/) |
-| **PyPI** | `pip install soerp3` |
-| **License** | BSD-3-Clause |
+    Open-source risk analysis with predictive modeling and Monte Carlo
+    simulation for uncertainty workflows.
 
-```python
-from soerp3 import N, umath
+    [:fontawesome-brands-github: GitHub](https://github.com/eggzec/vatic)
 
-H = N(64, 0.5)    # Normal(mean=64, std=0.5)
-M = N(16, 0.1)
-P = N(361, 2)
-t = N(165, 0.5)
-C = 38.4
-Q = C * umath.sqrt((520 * H * P) / (M * (t + 460)))
-Q.describe()
-```
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/qtop.ico" style="width:26px;height:26px;object-fit:contain;"><strong>qtop</strong></span>
 
----
+    ---
 
-### sparse\_grid
+    Text-mode HPC queue monitor for PBS, SGE, and OAR clusters.
 
-**A Python Sparse Grid Package**
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/qtop/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/qtop)
 
-`sparse_grid` is a pure-Python implementation of regular sparse grids over box domains. It provides hierarchical index generation, nodal-to-hierarchical coefficient conversion, and fast function evaluation using the hat (piecewise-linear) basis.
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/pyswarm.ico" style="width:26px;height:26px;object-fit:contain;"><strong>pyswarm</strong></span>
 
-| | |
-|---|---|
-| **Repository** | [github.com/eggzec/sparse_grid](https://github.com/eggzec/sparse_grid) |
-| **Documentation** | [eggzec.github.io/sparse_grid](https://eggzec.github.io/sparse_grid/) |
-| **PyPI** | `pip install sparse-grid` |
-| **License** | BSD-3-Clause |
+    ---
 
-```python
-from sparse_grid import SparseGrid
+    Particle Swarm Optimization (PSO) for Python with a lightweight API for
+    constrained, gradient-free optimization.
 
-sg = SparseGrid(dim=2, level=3)
-sg.generate_points()
-for index in sg.indices:
-    pos = sg.g_p[tuple(index)].pos
-    sg.g_p[tuple(index)].fv = (
-        4.0 * pos[0] * (1.0 - pos[0]) * 4.0 * pos[1] * (1.0 - pos[1])
-    )
-sg.nodal_2_hier()
-print(sg.eval_funct([0.25, 0.75]))
-```
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/pyswarm/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/pyswarm)
 
----
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/pydoe.svg" style="width:26px;height:26px;object-fit:contain;"><strong>pydoe</strong></span>
 
-### kronrod
+    ---
 
-**Gauss-Kronrod Quadrature Rules for Python**
+    Design of Experiments package for Python with factorial,
+    response-surface, space-filling, and optimal design methods.
 
-`kronrod` computes abscissas and weights of Gauss-Kronrod quadrature rules. It optimally adds N+1 points to an N-point Gauss rule to produce a (2N+1)-point Gauss-Kronrod rule for numerical integration, allowing function values from the Gauss rule to be reused.
+    [:fontawesome-solid-book: Documentation](https://pydoe.github.io/pydoe/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/pydoe/pydoe)
 
-| | |
-|---|---|
-| **Repository** | [github.com/eggzec/kronrod](https://github.com/eggzec/kronrod) |
-| **PyPI** | `pip install kronrod` |
-| **License** | LGPL-2.1 |
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/mcerp.ico" style="width:26px;height:26px;object-fit:contain;"><strong>mcerp</strong></span>
 
----
+    ---
 
-### smolpack
+    Real-time Monte Carlo error propagation for Python using
+    latin-hypercube sampling.
 
-**Multidimensional Quadrature Using Sparse Grids for Python**
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/mcerp/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/mcerp)
 
-`smolpack` is a high-performance library for numerical integration (cubature) over the unit hypercube [0,1]^d using Smolyak's algorithm with Clenshaw–Curtis quadrature rules. Two solvers are provided: a *delayed Clenshaw–Curtis* variant (fewer function evaluations) and a *standard Clenshaw–Curtis* variant.
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/SOERP.svg" style="width:26px;height:26px;object-fit:contain;"><strong>soerp</strong></span>
 
-| | |
-|---|---|
-| **Repository** | [github.com/eggzec/smolpack](https://github.com/eggzec/smolpack) |
-| **Documentation** | [eggzec.github.io/smolpack](https://eggzec.github.io/smolpack/) |
-| **PyPI** | `pip install smolpack` |
-| **License** | LGPL-2.1 |
+    ---
 
-```python
-import numpy as np
-import smolpack
+    Second-order error propagation for Python to track uncertainty through
+    mathematical models using distribution moments.
 
-def my_func(dim, x):
-    return np.exp(np.sum(x))
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/soerp/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/soerp)
 
-result = smolpack.int_smolyak(my_func, dim=3, qq=5)
-```
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/ad.ico" style="width:26px;height:26px;object-fit:contain;"><strong>ad</strong></span>
 
----
+    ---
 
-### sdepack
+    First- and second-order automatic differentiation for Python with
+    transparent numerical operations.
 
-**Runge–Kutta Numerical Integration of Stochastic Differential Equations**
+    [:fontawesome-solid-book: Documentation](https://pythonhosted.org/ad/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/ad)
 
-`sdepack` provides high-performance numerical solvers for scalar Itô SDEs of the form:
+-   :fontawesome-brands-github: **sdepack**
 
-$$dX(t) = F(X, t)\,dt + Q\,G(X, t)\,dW(t)$$
+    ---
 
-Solvers range from the first-order **Euler–Maruyama** scheme to fourth-order stochastic Runge–Kutta methods using Kasdin coefficients. All solvers are deterministic via seed-controlled integration.
+    Stochastic Runge-Kutta solvers for scalar Ito SDEs, from Euler-Maruyama
+    to higher-order schemes.
 
-| | |
-|---|---|
-| **Repository** | [github.com/eggzec/sdepack](https://github.com/eggzec/sdepack) |
-| **Documentation** | [eggzec.github.io/sdepack](https://eggzec.github.io/sdepack/) |
-| **PyPI** | `pip install sdepack` |
-| **License** | MIT |
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/sdepack/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/sdepack)
 
-```python
-import numpy as np
-import sdepack
+-   :fontawesome-brands-github: **smolpack**
 
-x = np.zeros(101, dtype=np.float64)
-sdepack.rk4_ti_solve(
-    lambda x: -0.5 * x,   # drift
-    lambda x: 1.0,          # diffusion
-    x, 0.0, 10.0, 1.0, 100, 0.1, 42
-)
-```
+    ---
 
----
+    Multidimensional cubature over `[0,1]^d` using Smolyak sparse-grid
+    construction with Clenshaw-Curtis rules.
 
-## Special Functions & Algebra
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/smolpack/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/smolpack)
 
-### polpack
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/nulapack.png" style="width:26px;height:26px;object-fit:contain;"><strong>NULAPACK</strong></span>
 
-**Special Functions and Recursively-Defined Polynomial Families**
+    ---
 
-`polpack` is a high-performance library for evaluating special functions and recursively-defined polynomial families. The numerical core is written in Fortran and compiled via `f2py`. It includes routines for **Bernoulli**, **Chebyshev**, **Gegenbauer**, **Hermite**, **Laguerre**, and **Legendre** polynomials, among others, as well as combinatorial functions.
+    Numerical linear algebra package with Fortran core subroutines and
+    Python/C++ interfaces.
 
-| | |
-|---|---|
-| **Repository** | [github.com/eggzec/polpack](https://github.com/eggzec/polpack) |
-| **Documentation** | [eggzec.github.io/polpack](https://eggzec.github.io/polpack/) |
-| **PyPI** | `pip install polpack` |
-| **License** | LGPL-2.1 |
+    [:fontawesome-solid-book: Documentation](https://nulapack.github.io/NULAPACK/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/NULAPACK/NULAPACK)
 
-```python
-import numpy as np
-import polpack
+-   :fontawesome-brands-github: **polpack**
 
-bell = np.zeros(11, dtype=np.int32)
-polpack.bell(10, bell)
-print(f"Bell numbers: {bell}")
-```
+    ---
 
----
+    High-performance special functions and polynomial families with a
+    Fortran numerical core.
 
-### cordic
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/polpack/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/polpack)
 
-**CORDIC Algorithm for Python**
+-   :fontawesome-brands-github: **kronrod**
 
-`cordic` is a high-performance Python library implementing the CORDIC (COordinate Rotation DIgital Computer) algorithm for evaluating trigonometric, hyperbolic, exponential, logarithmic, and root functions using only shifts, additions, and a small look-up table. The core is written in C.
+    ---
 
-| | |
-|---|---|
-| **Repository** | [github.com/eggzec/cordic](https://github.com/eggzec/cordic) |
-| **PyPI** | `pip install cordic` |
-| **License** | LGPL-2.1 |
+    Gauss-Kronrod quadrature rule generator for reusable high-accuracy
+    numerical integration.
 
----
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/kronrod/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/kronrod)
 
-### NULAPACK
+-   :fontawesome-brands-github: **sparse_grid**
 
-**NUmerical Linear Algebra PACKage**
+    ---
 
-NULAPACK is a lightweight, high-performance numerical linear algebra library. Core subroutines are implemented in Fortran for efficiency, with convenient C++ and Python interfaces. Developed under the [nulapack](https://github.com/nulapack) organisation, maintained by eggzec contributors.
+    Pure-Python sparse grid implementation with hierarchical index generation
+    and fast hat-basis evaluation.
 
-| | |
-|---|---|
-| **Repository** | [github.com/nulapack/nulapack](https://github.com/nulapack/nulapack) |
-| **Documentation** | [nulapack.github.io/NULAPACK](https://nulapack.github.io/NULAPACK/) |
-| **PyPI** | `pip install nulapack` |
-| **License** | GPL-3.0 |
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/sparse_grid/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/sparse_grid)
 
----
+-   :fontawesome-brands-github: **cordic**
 
-## Engineering & Design
+    ---
 
-### deltaFlow
+    CORDIC-based trigonometric, hyperbolic, exponential, logarithmic, and
+    root-function evaluation library for Python.
 
-**Power System Analysis Tool**
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/cordic/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/cordic)
 
-`deltaFlow` is a power system analysis tool for steady-state and dynamic simulation of electrical networks. It is designed for engineers and researchers working on grid analysis, load flow studies, and power system planning.
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/deltaFlow.png" style="width:26px;height:26px;object-fit:contain;"><strong>deltaFlow</strong></span>
 
-| | |
-|---|---|
-| **Repository** | [github.com/eggzec/deltaFlow](https://github.com/eggzec/deltaFlow) |
-| **Documentation** | [eggzec.github.io/deltaFlow](https://eggzec.github.io/deltaFlow/) |
-| **License** | GPL-3.0 |
+    ---
 
----
+    Command-line power-flow analysis tool for electrical systems using
+    Gauss-Seidel and Newton-Raphson solvers.
 
-### pydoe
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/deltaFlow/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/deltaFlow)
 
-**Design of Experiments for Python**
+-   <span style="display:flex;align-items:center;gap:10px;"><img src="https://github.com/Java-DOE.png" style="width:26px;height:26px;object-fit:contain;"><strong>JavaDOE</strong></span>
 
-`pydoe` enables scientists, engineers, and statisticians to efficiently construct experimental designs. It provides extensive support for factorial, response surface, and space-filling designs. Developed under the [pydoe](https://github.com/pydoe) organisation, maintained by eggzec contributors.
+    ---
 
-Supported design families:
+    Java Design of Experiments library including Box-Behnken, central
+    composite, and factorial designs.
 
-- Full-Factorial and 2-level Full-Factorial
-- Fractional Factorial (with aliasing, resolution, and optimal selection)
-- Plackett–Burman
-- Generalized Subset Designs
-- Box–Behnken, Central Composite
-- Latin Hypercube Sampling
+    [:fontawesome-brands-github: GitHub](https://github.com/Java-DOE/JavaDOE)
 
-| | |
-|---|---|
-| **Repository** | [github.com/pydoe/pydoe](https://github.com/pydoe/pydoe) |
-| **Documentation** | [pydoe.github.io/pydoe](https://pydoe.github.io/pydoe/) |
-| **PyPI** | `pip install pydoe` |
-| **Conda** | `conda install -c conda-forge pydoe` |
-| **License** | BSD-3-Clause |
+-   :fontawesome-brands-github: **qweb**
 
----
+    ---
 
-### JavaDOE
+    Web interface for Sun Grid Engine with job submission, monitoring, and
+    cluster management endpoints.
 
-**Design of Experiments Library for Java**
+    [:fontawesome-brands-github: GitHub](https://github.com/eggzec/qweb)
 
-`JavaDOE` is a comprehensive Java library for Design of Experiments (DOE) algorithms, including Box–Behnken, Central Composite, Factorial, and other DOE methods. Developed under the [Java-DOE](https://github.com/Java-DOE) organisation, maintained by eggzec contributors.
+</div>
 
-| | |
-|---|---|
-| **Repository** | [github.com/Java-DOE/JavaDOE](https://github.com/Java-DOE/JavaDOE) |
-| **License** | Apache-2.0 |
+## Work In Progress (WIP)
 
----
+<div class="grid cards" markdown>
 
-## In Progress
+-   :fontawesome-brands-github: **pyact**
 
-### permit
+    ---
 
-**License as a Service (LaaS) MVP**
+    Python wrapper around `nektos/act` for local GitHub Actions workflows.
 
-`permit` is a minimal viable product exploring license-as-a-service infrastructure — programmatic license issuance, verification, and management for software projects.
+    [:fontawesome-brands-github: GitHub](https://github.com/laraibg786/pyact)
 
-[:fontawesome-brands-github: github.com/eggzec/permit](https://github.com/eggzec/permit)
+-   :fontawesome-brands-github: **pydanticInput**
 
----
+    ---
 
-### qqq
+    Input-validation utility project built around Pydantic, currently under
+    active development.
 
-**Web Interface for Sun Grid Engine**
+    [:fontawesome-brands-github: GitHub](https://github.com/laraibg786/pydanticInput)
 
-`qqq` is a web interface for Sun Grid Engine (SGE) that visualises cluster jobs and allows basic job management. Useful for HPC users who prefer a browser-based view over the `qstat` command line.
+-   :fontawesome-brands-github: **codeCurfew**
 
-[:fontawesome-brands-github: github.com/eggzec/qqq](https://github.com/eggzec/qqq)
+    ---
 
----
+    Go-based tooling project currently in progress.
 
-### pyact
+    [:fontawesome-brands-github: GitHub](https://github.com/laraibg786/codeCurfew)
 
-Early-stage Python package currently in active development.
+-   :fontawesome-brands-github: **permit**
 
-[:fontawesome-brands-github: github.com/eggzec/pyact](https://github.com/eggzec/pyact)
+    ---
 
----
+    License as a Service MVP exploring programmatic license issuance and
+    verification flows.
 
-### pydanticInput
+    [:fontawesome-brands-github: GitHub](https://github.com/eggzec/permit)
 
-Early-stage Python package currently in active development.
-
-[:fontawesome-brands-github: github.com/eggzec/pydanticInput](https://github.com/eggzec/pydanticInput)
-
----
-
-### scikit-ode
-
-**Differential Equation Solver for Python**
-
-Early-stage Python package currently in active development.
-
-[:fontawesome-brands-github: github.com/eggzec/scikit-ode](https://github.com/eggzec/scikit-ode)
-
----
-
-### codeCurfew
-
-Early-stage project currently in active development.
-
-[:fontawesome-brands-github: github.com/eggzec/codeCurfew](https://github.com/eggzec/codeCurfew)
+</div>

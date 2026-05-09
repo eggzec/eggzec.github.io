@@ -1,0 +1,15 @@
+.md-typeset a,
+.md-nav__link,
+.md-tabs__link,
+.md-header__topic,
+.md-ellipsis {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.md-typeset a:hover,
+.md-nav__link:hover,
+.md-tabs__link:hover {
+  color: inherit !important;
+  text-decoration: none !important;
+}
