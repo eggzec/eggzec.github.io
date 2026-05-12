@@ -54,7 +54,7 @@ A community focused on open source high-performance scientific computing and mod
 
     First- and second-order automatic differentiation for Python.
 
-    [:fontawesome-solid-book: Documentation](https://pythonhosted.org/ad/)
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/ad/)
     &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/ad)
 
 -   <span style="display:flex;align-items:center;gap:10px;"><img src="assets/images/qtop.ico" style="width:26px;height:26px;object-fit:contain;"><strong>qtop</strong></span>
