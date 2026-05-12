@@ -79,7 +79,7 @@ icon: fontawesome/solid/diagram-project
     First- and second-order automatic differentiation for Python with
     transparent numerical operations.
 
-    [:fontawesome-solid-book: Documentation](https://pythonhosted.org/ad/)
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/ad/)
     &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/ad)
 
 -   :fontawesome-brands-github: **sdepack**
