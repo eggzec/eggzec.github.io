@@ -8,7 +8,7 @@
 &nbsp; [:fontawesome-brands-linkedin: LinkedIn](https://www.linkedin.com/in/saudzahirr/)
 &nbsp; [:fontawesome-solid-envelope: Email](mailto:m.saud.zahir@gmail.com)
 
-I am a software engineer, passionate for developing high-quality software. I am highly proficient using the NumPy, SciPy, and Pandas. I have experience interfacing Python with C, C++, and Fortran, as well as programming directly in these languages. I work across the full software lifecycle, from problem formulation and system design to implementation, optimization, and deployment, with a focus on clean, maintainable, and reliable solutions for data-intensive environments.
+I am a software engineer, passionate for developing high-quality software. I have experience interfacing Python with C, C++, and Fortran, as well as programming directly in these languages. I work across the full software lifecycle, from problem formulation and system design to implementation, optimization, and deployment, with a focus on clean, maintainable, and reliable solutions for data-intensive environments.
 
 <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;margin-top:24px;">
   <a href="https://www.python.org/" target="_blank" rel="noopener"><img src="https://www.python.org/static/community_logos/python-logo-generic.svg" alt="Python" style="height:52px;"></a>
