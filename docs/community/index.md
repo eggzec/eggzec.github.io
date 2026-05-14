@@ -11,7 +11,7 @@ icon: fontawesome/solid/users
     ---
 
     Co-founder and maintainer. Software developer focused on Python, C++,
-    and Rust for backend services and high-performance scientific computing.
+    and Rust for high-performance scientific computing.
 
 -   <a href="laraib.md" style="display:flex;align-items:center;gap:12px;"><img src="https://github.com/laraibg786.png" style="width:56px;height:56px;border-radius:8px;object-fit:cover;"><strong>M. Laraib Ali</strong></a>
 
