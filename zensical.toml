@@ -22,7 +22,6 @@ nav = [
   { "How We Build" = "how-we-build.md"    },
   { "Contributing" = "contributing.md"    },
   { "Contact"   = "contact.md"            },
-  { "Blogs"     = "blogs/index.md"        },
 ]
 
 extra_javascript = [
