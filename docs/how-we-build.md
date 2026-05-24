@@ -117,7 +117,7 @@ Here are the tools we actively use to build, test, ship, and maintain software.
 
 <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;margin-top:16px;margin-bottom:32px;">
   <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener"><img src="https://www.anthropic.com/images/icons/apple-touch-icon.png" alt="Claude Code" style="height:56px;"></a>
-  <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener"><img src="https://claude.ai/favicon.ico" alt="Claude Code" style="height:56px;"></a>
+  <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener"><img src="./assets/images/claude.ico" alt="Claude Code" style="height:56px;"></a>
   <a href="https://openai.com/" target="_blank" rel="noopener"><img src="https://github.com/openai.png" alt="OpenAI" style="height:56px;"></a>
   <a href="https://openai.com/codex/" target="_blank" rel="noopener"><img src="https://github.com/codex.png" alt="Codex" style="height:56px;"></a>
 </div>
