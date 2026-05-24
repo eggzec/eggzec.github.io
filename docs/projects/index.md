@@ -132,6 +132,15 @@ icon: fontawesome/solid/diagram-project
     [:fontawesome-solid-book: Documentation](https://eggzec.github.io/kronrod/)
     &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/kronrod)
 
+-   :fontawesome-brands-github: **spinterp**
+
+    ---
+
+    Sparse Grid Interpolation Toolbox for Python
+
+    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/spinterp/)
+    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/spinterp)
+
 -   :fontawesome-brands-github: **sparse_grid**
 
     ---
@@ -152,16 +161,6 @@ icon: fontawesome/solid/diagram-project
     [:fontawesome-solid-book: Documentation](https://eggzec.github.io/cordic/)
     &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/cordic)
 
--   <span style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/deltaFlow.png" style="width:26px;height:26px;object-fit:contain;"><strong>deltaFlow</strong></span>
-
-    ---
-
-    Command-line power-flow analysis tool for electrical systems using
-    Gauss-Seidel and Newton-Raphson solvers.
-
-    [:fontawesome-solid-book: Documentation](https://eggzec.github.io/deltaFlow/)
-    &nbsp; [:fontawesome-brands-github: GitHub](https://github.com/eggzec/deltaFlow)
-
 -   <span style="display:flex;align-items:center;gap:10px;"><img src="https://github.com/Java-DOE.png" style="width:26px;height:26px;object-fit:contain;"><strong>JavaDOE</strong></span>
 
     ---
@@ -179,45 +178,5 @@ icon: fontawesome/solid/diagram-project
     cluster management endpoints.
 
     [:fontawesome-brands-github: GitHub](https://github.com/eggzec/qweb)
-
-</div>
-
-## Work In Progress (WIP)
-
-<div class="grid cards" markdown>
-
--   :fontawesome-brands-github: **pyact**
-
-    ---
-
-    Python wrapper around `nektos/act` for local GitHub Actions workflows.
-
-    [:fontawesome-brands-github: GitHub](https://github.com/laraibg786/pyact)
-
--   :fontawesome-brands-github: **pydanticInput**
-
-    ---
-
-    Input-validation utility project built around Pydantic, currently under
-    active development.
-
-    [:fontawesome-brands-github: GitHub](https://github.com/laraibg786/pydanticInput)
-
--   :fontawesome-brands-github: **codeCurfew**
-
-    ---
-
-    Go-based tooling project currently in progress.
-
-    [:fontawesome-brands-github: GitHub](https://github.com/laraibg786/codeCurfew)
-
--   :fontawesome-brands-github: **permit**
-
-    ---
-
-    License as a Service MVP exploring programmatic license issuance and
-    verification flows.
-
-    [:fontawesome-brands-github: GitHub](https://github.com/eggzec/permit)
 
 </div>
