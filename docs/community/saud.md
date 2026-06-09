@@ -13,7 +13,6 @@ I am a software engineer, passionate for developing high-quality software. I hav
 <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;margin-top:24px;">
   <a href="https://www.python.org/" target="_blank" rel="noopener"><img src="https://www.python.org/static/community_logos/python-logo-generic.svg" alt="Python" style="height:52px;"></a>
   <a href="https://isocpp.org/" target="_blank" rel="noopener"><img src="https://isocpp.org/assets/images/cpp_logo.png" alt="C++" style="height:64px;"></a>
-  <a href="https://www.rust-lang.org/" target="_blank" rel="noopener" style="margin-right:-46px;"><img src="https://rust-lang.org/static/images/rust-logo-blk.svg" alt="Rust" style="height:82px;"></a>
   <a href="https://www.java.com/" target="_blank" rel="noopener" style="margin-right:-30px;"><img src="https://www.oracle.com/a/ocom/img/cb71-java-logo.png" alt="Java" style="height:92px;"></a>
   <a href="https://fortran-lang.org/" target="_blank" rel="noopener"><img src="https://fortran-lang.org/_static/fortran-logo-256x256.png" alt="Fortran" style="height:52px;"></a>
   <a href="https://www.qt.io/" target="_blank" rel="noopener"><img src="https://github.com/qt.png" alt="Qt" style="height:68px;"></a>
