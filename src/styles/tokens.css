@@ -1,0 +1,129 @@
+/* ==========================================================================
+   eggzec design tokens
+   --------------------------------------------------------------------------
+   One theme: the Electropop palette on white.
+
+     Kiwi     #CCFF00   block fills, buttons, knockouts
+     Orange   #FF6B00   third accent — counts, highlights
+     Magenta  #F900FF   sparks, hover, the "byte" cells
+     Violet   #5200FF   accent *text* and links — the only palette colour
+                        with enough contrast against white to be read
+
+   The split between `--accent-fill` and `--accent-text` is the whole trick:
+   kiwi is brilliant as a field with black on top of it, and illegible as
+   type on white. Violet carries every accent that has to be read.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* ---- raw palette ---------------------------------------------------- */
+  --kiwi: #ccff00;
+  --orange: #ff6b00;
+  --magenta: #f900ff;
+  --violet: #5200ff;
+
+  /* ---- ground and ink -------------------------------------------------- */
+  --bg: #ffffff;
+  --bg-raised: #ffffff;
+  --bg-overlay: #ffffff;
+  --bg-sunken: #f5f5f2;
+  --bg-inverse: #0a0a0d;
+
+  --ink: #0a0a0d;
+  --ink-muted: #56565f;
+  --ink-faint: #8a8a93;
+  --ink-inverse: #ffffff;
+
+  --line: rgba(10, 10, 13, 0.13);
+  --line-strong: rgba(10, 10, 13, 0.28);
+  --grid-line: rgba(10, 10, 13, 0.045);
+
+  /* ---- accent roles ---------------------------------------------------- */
+  --accent-fill: var(--kiwi);
+  --accent-text: var(--violet);
+  --accent-on: #0a0a0d;
+  --accent-soft: rgba(82, 0, 255, 0.07);
+  --accent-line: rgba(82, 0, 255, 0.3);
+
+  --surface-brand: var(--violet);
+  --surface-brand-ink: var(--kiwi);
+  --spark: var(--magenta);
+  --heat: var(--orange);
+
+  /* Life field: kiwi disappears on white, so the automaton runs in violet
+     and flashes magenta on birth. */
+  --field-live: var(--violet);
+  --field-born: var(--magenta);
+
+  /* ---- type ----------------------------------------------------------- */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Display',
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  --text-3xl: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  --text-4xl: clamp(2.75rem, 1.4rem + 5.4vw, 5.5rem);
+
+  --leading-tight: 1.08;
+  --leading-snug: 1.28;
+  --leading-normal: 1.62;
+
+  --tracking-tight: -0.022em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em;
+  --tracking-widest: 0.16em;
+
+  /* ---- space ---------------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  --section-y: clamp(4rem, 2.6rem + 6.4vw, 8rem);
+  --gutter: clamp(1.25rem, 0.6rem + 2.6vw, 3rem);
+  --container: 1240px;
+  --container-narrow: 760px;
+
+  /* ---- shape ---------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  --border: 1px;
+  --nav-h: 66px;
+  --nav-h-top: 66px;
+
+  --shadow-sm: 0 1px 2px rgba(10, 10, 13, 0.06);
+  --shadow-md: 0 14px 34px -18px rgba(10, 10, 13, 0.3);
+  --shadow-lg: 0 34px 80px -32px rgba(10, 10, 13, 0.34);
+  --shadow-accent: 0 0 0 1px var(--accent-line), 0 18px 50px -24px rgba(82, 0, 255, 0.32);
+
+  /* ---- motion --------------------------------------------------------- */
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+  --dur-slow: 480ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --z-base: 1;
+  --z-sticky: 50;
+  --z-nav: 100;
+  --z-overlay: 200;
+}

@@ -6,8 +6,11 @@ updates:
       interval: "weekly"
       day: "friday"
 
-  - package-ecosystem: "uv"
-    directory: "/"
+  - package-ecosystem: "npm"
+    directory: "/web"
     schedule:
       interval: "weekly"
       day: "friday"
+    groups:
+      dev-dependencies:
+        dependency-type: "development"
