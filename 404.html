@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <!-- meta: {
+    "title": "404 · eggzec",
+    "description": "That page does not exist. Head back to the projects, the community, or the eggzec GitHub organization.",
+    "path": "/404.html"
+  } -->
+  <head>
+    <!--@include head-->
+    <meta name="robots" content="noindex" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header data-nav></header>
+
+    <main id="main">
+      <section class="notfound">
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="notfound__field" aria-hidden="true">
+          <canvas data-life-field data-cell="17" data-tps="9" data-density="0.15" data-intensity="0.45"></canvas>
+        </div>
+
+        <div class="container notfound__inner">
+          <div
+            class="display notfound__code"
+            data-display
+            data-lines="404"
+            data-knockout="0:1"
+            role="heading"
+            aria-level="1"
+            aria-label="404"
+          ></div>
+
+          <h2 class="notfound__title" data-reveal data-reveal-delay="260">
+            This cell died out
+          </h2>
+
+          <p class="notfound__body" data-reveal data-reveal-delay="320">
+            The page you asked for is not here. It may have been moved, renamed, or it never
+            existed. The repository it belonged to might live under a different name now.
+          </p>
+
+          <div class="notfound__links" data-reveal data-reveal-delay="380">
+            <a class="button button--primary" href="/" data-magnetic>Back home</a>
+            <a class="button button--ghost" href="/projects/" data-magnetic>All projects</a>
+            <a
+              class="button button--ghost"
+              href="https://github.com/eggzec"
+              target="_blank"
+              rel="noopener"
+              data-magnetic
+              >github.com/eggzec</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer data-footer></footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

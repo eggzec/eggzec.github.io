@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <!-- meta: {
+    "title": "Projects · eggzec",
+    "description": "Every eggzec project: uncertainty propagation, optimization and design of experiments, numerics, and developer tooling.",
+    "path": "/projects/"
+  } -->
+  <head>
+    <!--@include head-->
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header data-nav></header>
+
+    <main id="main">
+      <section class="page-header" data-spotlight>
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="container page-header__inner">
+          <p class="mono section__eyebrow" data-reveal>Projects</p>
+          <h1 class="page-header__title" data-reveal data-reveal-delay="60">
+            Everything we maintain
+          </h1>
+          <p class="page-header__lede" data-reveal data-reveal-delay="120">
+            Sorted by what the code does rather than what language it is written in. Each card
+            opens the repository; documentation and package links sit alongside it where they
+            exist.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div data-project-catalog></div>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="container">
+          <div class="callout" data-reveal>
+            <span class="callout__bar" aria-hidden="true"></span>
+            <div>
+              <p style="margin-bottom: var(--space-2)">
+                <strong>They are all built the same way.</strong>
+              </p>
+              <p style="color: var(--ink-muted)">
+                A numerical core in Fortran or C++, a small Python API on top, and a test suite
+                that runs on every push. Pick one, read its README, and open an issue on
+                <a
+                  href="https://github.com/eggzec"
+                  target="_blank"
+                  rel="noopener"
+                  style="color: var(--accent-text)"
+                  >github.com/eggzec</a
+                >
+                if anything is unclear.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer data-footer></footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
