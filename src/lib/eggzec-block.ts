@@ -78,52 +78,63 @@ function roundedRect(x: number, y: number, w: number, h: number): string {
   )
 }
 
-function glyphPath(spec: string, dx: number): { d: string; cells: Array<[number, number]> } {
+/**
+ * Render one bitmap as merged runs. The grid is read from the spec rather than
+ * assumed, so callers can author glyphs on a taller or wider body than the 5x7
+ * font — the maths glyphs in `components/draw-field` do exactly that.
+ */
+export function bitmapPath(spec: string, dx = 0, dy = 0): { d: string; cells: Array<[number, number]> } {
   const rows = spec.split('/')
+  const rowCount = rows.length
+  const colCount = rows[0]?.length ?? 0
   const cells: Array<[number, number]> = []
   let d = ''
 
   const on = (col: number, row: number): boolean => rows[row]?.[col] === '1'
 
   // Horizontal runs.
-  for (let r = 0; r < ROWS; r++) {
+  for (let r = 0; r < rowCount; r++) {
     let start: number | null = null
-    for (let c = 0; c <= COLS; c++) {
-      const lit = c < COLS && on(c, r)
+    for (let c = 0; c <= colCount; c++) {
+      const lit = c < colCount && on(c, r)
       if (lit) {
         if (start === null) start = c
         cells.push([c, r])
       }
       if (!lit && start !== null) {
-        d += roundedRect(dx + start + OFF, r + OFF, c - start - 2 * OFF, T)
+        d += roundedRect(dx + start + OFF, dy + r + OFF, c - start - 2 * OFF, T)
         start = null
       }
     }
   }
 
   // Vertical runs.
-  for (let c = 0; c < COLS; c++) {
+  for (let c = 0; c < colCount; c++) {
     let start: number | null = null
-    for (let r = 0; r <= ROWS; r++) {
-      const lit = r < ROWS && on(c, r)
+    for (let r = 0; r <= rowCount; r++) {
+      const lit = r < rowCount && on(c, r)
       if (lit && start === null) start = r
       if (!lit && start !== null) {
-        d += roundedRect(dx + c + OFF, start + OFF, T, r - start - 2 * OFF)
+        d += roundedRect(dx + c + OFF, dy + start + OFF, T, r - start - 2 * OFF)
         start = null
       }
     }
   }
 
   // Bridge diagonal junctions so stairs read as continuous strokes.
-  for (let r = 0; r < ROWS; r++) {
-    for (let c = 0; c < COLS; c++) {
+  for (let r = 0; r < rowCount; r++) {
+    for (let c = 0; c < colCount; c++) {
       if (!on(c, r)) continue
-      if (on(c + 1, r + 1)) d += roundedRect(dx + c + 1 - 0.36, r + 1 - 0.36, 0.72, 0.72)
-      if (on(c + 1, r - 1)) d += roundedRect(dx + c + 1 - 0.36, r - 0.36, 0.72, 0.72)
+      if (on(c + 1, r + 1)) d += roundedRect(dx + c + 1 - 0.36, dy + r + 1 - 0.36, 0.72, 0.72)
+      if (on(c + 1, r - 1)) d += roundedRect(dx + c + 1 - 0.36, dy + r - 0.36, 0.72, 0.72)
     }
   }
 
   return { d, cells }
+}
+
+function glyphPath(spec: string, dx: number): { d: string; cells: Array<[number, number]> } {
+  return bitmapPath(spec, dx, 0)
 }
 
 /** Lay out a string of block lettering. `tracking` adds grid units between glyphs. */

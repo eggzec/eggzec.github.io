@@ -371,22 +371,22 @@
   opacity: 0;
 }
 
-/* ---- mark draw ---------------------------------------------------------- */
+/* ---- draw field --------------------------------------------------------- */
 
-/* The composition plays once, on the timings the reference uses: traces run in
-   first, the bar stack fills the egg behind them, the silhouette is traced, and
-   the byte cells land last. Delays come from a `--i` index on each element, so
-   the whole sequence is CSS and JS only flips `is-playing`. */
+/* The plate plays once and holds. Delays come from a `--i` index on each
+   element, so the whole sequence is CSS and JS only flips `is-playing`:
+   contours and axes draw, the nabla is outlined and then filled through its bar
+   matte, the descent and residual curves run, and the binary lands last. */
 
 /* The host keeps whatever box its own page rule gave it — the footer rule is a
    54px strip in flow, the hero field is an absolute panel — so only the SVG is
    positioned here. */
-.mark-draw {
+.draw-field {
   pointer-events: none;
   overflow: hidden;
 }
 
-.mark-draw__svg {
+.draw-field__svg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -394,86 +394,196 @@
   overflow: visible;
 }
 
-.mark-draw__svg--rule {
+.draw-field__svg--rule {
   overflow: hidden;
 }
 
 /* Paused until the host scrolls in — a paused animation holds its start frame
    and does not burn through its delay, so this is the whole "not yet" state. */
-.mark-draw [class^='mark-draw__'] {
+.draw-field [class^='draw-field__'] {
   animation-play-state: paused;
 }
 
-.mark-draw.is-playing [class^='mark-draw__'] {
+.draw-field.is-playing [class^='draw-field__'] {
   animation-play-state: running;
 }
 
-/* -- traces --------------------------------------------------------------- */
+/* -- contour plot --------------------------------------------------------- */
 
-.mark-draw__trace {
+.draw-field__ring {
   fill: none;
   stroke: var(--mark-trace);
-  stroke-width: 0.13;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke-width: 0.1;
   stroke-dasharray: 1 1;
-  animation: mark-trace 1.5s var(--ease-out) both;
-  animation-delay: calc(var(--i, 0) * 0.16s);
+  animation: df-draw 1.1s var(--ease-out) both;
+  animation-delay: calc(0.2s + var(--i, 0) * 0.14s);
 }
 
-.mark-draw__svg--rule .mark-draw__trace {
-  stroke-width: 0.5;
-  animation-duration: 2.2s;
-  animation-delay: calc(var(--i, 0) * 0.24s);
-}
-
-/* -- bar stack ------------------------------------------------------------ */
-
-/* Two moves in one keyframe track, because both write `transform`: the bar
-   grows out from the centre line, waits, then swells vertically to close the
-   gap to its neighbours so the stack resolves into a solid mark. */
-.mark-draw__bar {
-  fill: var(--mark-fill);
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: mark-bar 1.9s both;
-  animation-delay: calc(0.45s + var(--i, 0) * 0.115s);
-}
-
-/* -- silhouette ----------------------------------------------------------- */
-
-.mark-draw__outline {
+.draw-field__descent {
   fill: none;
   stroke: var(--mark-line);
   stroke-width: 0.14;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   stroke-dasharray: 1 1;
-  animation: mark-trace 1.6s var(--ease-out) both;
-  animation-delay: 1.1s;
+  animation: df-draw 1.3s var(--ease-out) both;
+  animation-delay: 1.5s;
 }
 
-/* -- sparks and cells ----------------------------------------------------- */
-
-.mark-draw__spark {
+.draw-field__iterate {
   fill: var(--mark-spark);
   transform-box: fill-box;
   transform-origin: center;
-  animation: mark-spark 0.7s var(--ease-out) both;
-  animation-delay: calc(1.45s + var(--i, 0) * 0.16s);
+  animation: df-pop 0.5s var(--ease-spring) both;
+  animation-delay: calc(1.9s + var(--i, 0) * 0.13s);
 }
 
-.mark-draw__svg--rule .mark-draw__spark {
-  animation-delay: calc(1.1s + var(--i, 0) * 0.22s);
+/* -- residual curve ------------------------------------------------------- */
+
+.draw-field__axis {
+  fill: none;
+  stroke: var(--mark-line);
+  stroke-width: 0.1;
+  stroke-dasharray: 1 1;
+  animation: df-draw 0.9s var(--ease-out) both;
+  animation-delay: 1.7s;
 }
 
-.mark-draw__cell {
+.draw-field__tol {
+  fill: none;
+  stroke: var(--mark-trace);
+  stroke-width: 0.07;
+  stroke-dasharray: 0.02 0.012;
+  animation: df-fade 0.6s var(--ease-out) both;
+  animation-delay: 2.4s;
+}
+
+.draw-field__curve {
+  fill: none;
+  stroke: var(--mark-line);
+  stroke-width: 0.14;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1 1;
+  animation: df-draw 1.2s var(--ease-out) both;
+  animation-delay: 2.1s;
+}
+
+.draw-field__sample {
+  fill: var(--mark-heat);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: df-pop 0.44s var(--ease-spring) both;
+  animation-delay: calc(2.5s + var(--i, 0) * 0.1s);
+}
+
+/* -- nabla ---------------------------------------------------------------- */
+
+.draw-field__glyph {
+  fill: none;
+  stroke: var(--mark-line);
+  stroke-width: 0.12;
+  stroke-dasharray: 1 1;
+  animation: df-draw 1.5s var(--ease-out) both;
+  animation-delay: 0.45s;
+}
+
+/* Two moves in one keyframe track, because both write `transform`: the bar
+   grows out from the centre line, waits, then swells vertically to close the
+   gap to its neighbours so the stack resolves into a solid glyph. */
+.draw-field__bar {
+  fill: var(--mark-fill);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: df-bar 1.8s both;
+  animation-delay: calc(0.85s + var(--i, 0) * 0.09s);
+}
+
+/* -- type ----------------------------------------------------------------- */
+
+.draw-field__bit {
+  fill: var(--mark-text);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: df-bit 0.42s var(--ease-out) both;
+  animation-delay: calc(2.35s + var(--i, 0) * 0.045s);
+}
+
+.draw-field__bit--lit {
+  fill: var(--mark-spark);
+}
+
+.draw-field__svg--rule .draw-field__bit {
+  animation-delay: calc(var(--i, 0) * 0.05s);
+}
+
+/* Equations are set in eggzec Block, so each glyph is geometry rather than
+   text: it wipes up the way the display headings do. */
+.draw-field__eq {
+  fill: var(--mark-text);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: df-bit 0.4s var(--ease-out) both;
+  animation-delay: calc(0.6s + var(--i, 0) * 0.035s);
+}
+
+.draw-field__label {
+  fill: var(--mark-trace);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: df-bit 0.4s var(--ease-out) both;
+  animation-delay: calc(2.7s + var(--i, 0) * 0.05s);
+}
+
+/* -- script L ------------------------------------------------------------- */
+
+/* Written on block by block, in the order the stroke would be made. */
+.draw-field__stroke {
+  fill: var(--mark-line);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: df-pop 0.34s var(--ease-out) both;
+  animation-delay: calc(1.5s + var(--i, 0) * 0.035s);
+}
+
+/* -- Wiener path and pollen ----------------------------------------------- */
+
+.draw-field__walk {
+  fill: none;
+  stroke: var(--mark-trace);
+  stroke-width: 0.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1 1;
+  animation: df-draw 1.8s linear both;
+  animation-delay: 2.6s;
+}
+
+/* The one thing that never settles. Three tracks at staggered durations, so
+   no two grains drift together; transforms only, so it stays on the
+   compositor once the rest of the plate has resolved. */
+.draw-field__pollen {
   fill: var(--mark-spark);
   transform-box: fill-box;
   transform-origin: center;
-  animation: mark-cell 0.55s var(--ease-spring) both;
-  animation-delay: calc(2.9s + var(--i, 0) * 0.085s);
+  opacity: 0;
+  animation:
+    df-fade 0.5s var(--ease-out) forwards,
+    df-drift-0 var(--dur, 8s) ease-in-out infinite alternate;
+  animation-delay: calc(3.2s + var(--i, 0) * 0.06s), calc(3.2s + var(--i, 0) * -0.9s);
 }
 
-@keyframes mark-trace {
+.draw-field__pollen--1 {
+  fill: var(--mark-heat);
+  animation-name: df-fade, df-drift-1;
+}
+
+.draw-field__pollen--2 {
+  fill: var(--mark-trace);
+  animation-name: df-fade, df-drift-2;
+}
+
+@keyframes df-draw {
   from {
     stroke-dashoffset: 1;
   }
@@ -482,43 +592,16 @@
   }
 }
 
-/* The reference's own easing, read off the Lottie keyframes. */
-@keyframes mark-bar {
-  0% {
-    transform: scaleX(0) scaleY(1);
-    animation-timing-function: cubic-bezier(0.42, 0, 0.07, 0.95);
-  }
-  39% {
-    transform: scaleX(1) scaleY(1);
-    animation-timing-function: linear;
-  }
-  71% {
-    transform: scaleX(1) scaleY(1);
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  /* Slightly past the row pitch, so neighbours overlap and the rounded bar
-     ends stop notching the silhouette. */
-  100% {
-    transform: scaleX(1) scaleY(1.78);
-  }
-}
-
-@keyframes mark-spark {
-  0% {
+@keyframes df-fade {
+  from {
     opacity: 0;
-    transform: scale(0);
   }
-  45% {
+  to {
     opacity: 1;
-    transform: scale(1.7);
-  }
-  100% {
-    opacity: 0.8;
-    transform: scale(1);
   }
 }
 
-@keyframes mark-cell {
+@keyframes df-pop {
   from {
     opacity: 0;
     transform: scale(0);
@@ -529,24 +612,129 @@
   }
 }
 
+@keyframes df-bit {
+  from {
+    opacity: 0;
+    transform: scaleY(0.15);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Brownian drift. The waypoints are irregular on purpose — evenly spaced ones
+   read as a pendulum rather than as a grain being knocked about. */
+@keyframes df-drift-0 {
+  0% {
+    transform: translate(0, 0);
+  }
+  18% {
+    transform: translate(0.22px, -0.5px);
+  }
+  37% {
+    transform: translate(-0.3px, 0.34px);
+  }
+  55% {
+    transform: translate(0.46px, 0.6px);
+  }
+  71% {
+    transform: translate(-0.18px, -0.28px);
+  }
+  88% {
+    transform: translate(0.34px, -0.62px);
+  }
+  100% {
+    transform: translate(-0.24px, 0.2px);
+  }
+}
+
+@keyframes df-drift-1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  22% {
+    transform: translate(-0.4px, 0.44px);
+  }
+  41% {
+    transform: translate(0.26px, 0.7px);
+  }
+  63% {
+    transform: translate(0.5px, -0.3px);
+  }
+  84% {
+    transform: translate(-0.32px, -0.56px);
+  }
+  100% {
+    transform: translate(0.18px, 0.38px);
+  }
+}
+
+@keyframes df-drift-2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(0.36px, 0.28px);
+  }
+  34% {
+    transform: translate(-0.5px, -0.42px);
+  }
+  58% {
+    transform: translate(0.2px, -0.66px);
+  }
+  79% {
+    transform: translate(-0.28px, 0.52px);
+  }
+  100% {
+    transform: translate(0.42px, -0.16px);
+  }
+}
+
+/* The reference's own easing, read off the Lottie keyframes. */
+@keyframes df-bar {
+  0% {
+    transform: scaleX(0) scaleY(1);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.07, 0.95);
+  }
+  41% {
+    transform: scaleX(1) scaleY(1);
+    animation-timing-function: linear;
+  }
+  72% {
+    transform: scaleX(1) scaleY(1);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  /* Slightly past the row pitch, so neighbours overlap and the rounded bar
+     ends stop notching the glyph. */
+  100% {
+    transform: scaleX(1) scaleY(1.72);
+  }
+}
+
 /* Reduced motion gets the finished frame, never the build. */
-.mark-draw.is-static [class^='mark-draw__'] {
+.draw-field.is-static [class^='draw-field__'] {
   animation: none;
 }
 
-.mark-draw.is-static .mark-draw__bar {
+.draw-field.is-static .draw-field__bar {
   transform-box: fill-box;
   transform-origin: center;
-  transform: scaleY(1.78);
+  transform: scaleY(1.72);
 }
 
-.mark-draw.is-static .mark-draw__trace,
-.mark-draw.is-static .mark-draw__outline {
+.draw-field.is-static .draw-field__ring,
+.draw-field.is-static .draw-field__descent,
+.draw-field.is-static .draw-field__axis,
+.draw-field.is-static .draw-field__curve,
+.draw-field.is-static .draw-field__walk,
+.draw-field.is-static .draw-field__glyph {
   stroke-dasharray: none;
 }
 
-.mark-draw.is-static .mark-draw__spark {
-  opacity: 0.8;
+/* Pollen is suspended rather than drifting — it opts out of motion entirely. */
+.draw-field.is-static .draw-field__pollen {
+  opacity: 1;
 }
 
 /* ---- stats ------------------------------------------------------------- */

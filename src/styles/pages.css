@@ -11,30 +11,36 @@
   isolation: isolate;
 }
 
-/* The mark draws itself on the right of the hero, behind the tail of the
-   display type. Faded at top and bottom so it reads as artwork on the page
-   rather than a panel, and never runs under the lede's measure. */
-/* Height is what positions the mark: the SVG centres itself in this box, so
-   keeping the box to the top of the hero lands the egg on the display band
-   rather than over the lede, and clear of the knockout letters. */
+/* The plate takes the right of the hero, flush with the top — the section
+   already starts below the nav, so it reads from just under it and the first
+   equation lands above the headline rather than behind it. It is never allowed
+   past the viewport edge, so nothing on it is half a glyph. Two masks
+   intersect: one fades the foot, one dissolves the left edge, which keeps the
+   lower motifs off the lede's measure without moving them. */
 .hero__field {
   position: absolute;
-  inset: -8% -8% auto auto;
-  width: min(58%, 720px);
-  height: 62%;
+  inset: 0 0 auto auto;
+  width: min(52%, 660px);
+  height: 54%;
   z-index: -2;
-  opacity: 0.85;
-  mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 76%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 76%, transparent 100%);
+  opacity: 0.7;
+  mask-image:
+    linear-gradient(to bottom, #000 93%, transparent 100%),
+    linear-gradient(to right, transparent, #000 30%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 93%, transparent 100%),
+    linear-gradient(to right, transparent, #000 30%);
+  -webkit-mask-composite: source-in;
 }
 
 @media (max-width: 900px) {
-  /* Nothing is beside it at this width, so it centres and drops back. */
+  /* Nothing is beside it at this width, so it spreads and drops back. */
   .hero__field {
-    inset: -8% -10% auto -10%;
+    inset: -2% 0 auto 0;
     width: auto;
-    height: 58%;
-    opacity: 0.45;
+    height: 76%;
+    opacity: 0.4;
   }
 }
 

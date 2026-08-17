@@ -71,7 +71,7 @@ export function mountFooter(): void {
         </div>
       </div>
 
-      <div class="site-footer__rule" data-mark-draw="rule" aria-hidden="true"></div>
+      <div class="site-footer__rule" data-draw-field="rule" aria-hidden="true"></div>
 
       <div class="site-footer__bottom">
         <p class="mono">© ${ORG.year} ${ORG.name} · ${ORG.tagline}</p>

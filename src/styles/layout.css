@@ -445,7 +445,7 @@ html.is-nav-open body {
   -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
 }
 
-.site-footer__rule .mark-draw__svg {
+.site-footer__rule .draw-field__svg {
   opacity: 0.55;
 }
 

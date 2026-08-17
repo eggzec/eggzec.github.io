@@ -18,7 +18,7 @@ import { mountNav } from './components/nav'
 import { mountFooter } from './components/footer'
 import { mountCounters, mountReveals } from './components/reveal'
 import { mountDisplayType } from './components/wordmark'
-import { mountMarkDraws } from './components/mark-draw'
+import { mountDrawFields } from './components/draw-field'
 import { mountMarquees } from './components/marquee'
 import { mountPixelRules } from './components/pixel-rule'
 import { mountPointerEffects } from './components/pointer'
@@ -73,7 +73,7 @@ function boot(): void {
   mountDisplayType()
 
   // Behaviour over whatever ended up in the DOM.
-  mountMarkDraws()
+  mountDrawFields()
   mountMarquees()
   mountPixelRules()
   mountReveals()
