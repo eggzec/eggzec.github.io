@@ -323,14 +323,6 @@
   transform: translateY(-3px);
 }
 
-.person__avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: var(--radius-md);
-  object-fit: cover;
-  background: var(--bg-sunken);
-}
-
 .person__name {
   font-size: var(--text-lg);
 }
@@ -345,14 +337,6 @@
   color: var(--ink-muted);
 }
 
-.person__links {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-}
-
 .person__hit {
   position: absolute;
   inset: 0;
@@ -363,32 +347,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-}
-
-/* ---- profile ------------------------------------------------------------ */
-
-.profile {
-  display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
-  gap: clamp(var(--space-5), 4vw, var(--space-8));
-  align-items: start;
-}
-
-.profile__avatar {
-  width: 100%;
-  border-radius: var(--radius-lg);
-  border: var(--border) solid var(--line);
-  background: var(--bg-raised);
-}
-
-@media (max-width: 720px) {
-  .profile {
-    grid-template-columns: 1fr;
-  }
-
-  .profile__avatar {
-    width: 140px;
-  }
 }
 
 /* ---- contact ------------------------------------------------------------ */

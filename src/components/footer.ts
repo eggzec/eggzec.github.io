@@ -8,19 +8,15 @@ const COLUMNS: Array<{ title: string; links: Array<{ label: string; href: string
     title: 'Projects',
     links: [
       { label: 'All projects', href: '/projects/' },
-      { label: 'pyswarm', href: 'https://eggzec.github.io/pyswarm/', external: true },
-      { label: 'pydoe', href: 'https://pydoe.github.io/pydoe/', external: true },
-      { label: 'mcerp', href: 'https://eggzec.github.io/mcerp/', external: true },
-      { label: 'nlpql', href: 'https://eggzec.github.io/nlpql/', external: true },
+      { label: 'PySwarm', href: 'https://eggzec.github.io/pyswarm/', external: true },
+      { label: 'PyDOE', href: 'https://pydoe.github.io/pydoe/', external: true },
+      { label: 'MCERP', href: 'https://eggzec.github.io/mcerp/', external: true },
+      { label: 'NLPQL', href: 'https://eggzec.github.io/nlpql/', external: true },
     ],
   },
   {
     title: 'Community',
-    links: [
-      { label: 'Maintainers', href: '/community/' },
-      { label: 'M. Saud Zahir', href: 'mailto:m.saud.zahir@gmail.com' },
-      { label: 'M. Laraib Ali', href: 'mailto:laraibg786@outlook.com' },
-    ],
+    links: [{ label: 'Maintainers', href: '/community/' }],
   },
   {
     title: 'Elsewhere',
@@ -76,7 +72,7 @@ export function mountFooter(): void {
       <div class="site-footer__bottom">
         <p class="mono">© ${ORG.year} ${ORG.name} · ${ORG.tagline}</p>
         <p class="mono">
-          <a href="mailto:${ORG.email}">${ORG.email}</a>
+          <a href="${ORG.github}" target="_blank" rel="noopener">GitHub</a>
         </p>
       </div>
     </div>`

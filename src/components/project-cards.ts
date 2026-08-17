@@ -68,16 +68,18 @@ export function mountFeaturedGrid(root: ParentNode = document): void {
 }
 
 /**
- * `<div data-project-catalog>` on /projects/. Featured projects lead, then the
- * rest grouped by category.
+ * `<div data-project-catalog>` on /projects/.
+ *
+ * Every project, grouped by category and nothing else. There is no featured
+ * block here: almost everything carries an icon now, so "featured" stopped
+ * separating anything, and it meant a reader met the same card twice.
  */
 export function mountCatalog(root: ParentNode = document): void {
   const host = root.querySelector<HTMLElement>('[data-project-catalog]')
   if (!host) return
 
-  const rest = PROJECTS.filter((p) => !p.icon)
   const counts = new Map<Category, number>()
-  for (const p of rest) counts.set(p.category, (counts.get(p.category) ?? 0) + 1)
+  for (const p of PROJECTS) counts.set(p.category, (counts.get(p.category) ?? 0) + 1)
   const sections = CATEGORY_ORDER.filter((c) => (counts.get(c) ?? 0) > 0)
 
   const filters = `
@@ -95,20 +97,9 @@ export function mountCatalog(root: ParentNode = document): void {
       }).join('')}
     </div>`
 
-  const featuredSection = `
-    <section class="catalog__section" data-featured-section>
-      <header class="catalog__header">
-        <h2 class="catalog__title">Featured</h2>
-        <p class="catalog__blurb">The projects we build on most, and keep documented and released.</p>
-      </header>
-      <div class="card-grid" data-reveal-group data-reveal-stagger="40">
-        ${FEATURED.map((p) => cardMarkup(p, 40)).join('')}
-      </div>
-    </section>`
-
   const body = sections
     .map((category) => {
-      const items = rest.filter((p) => p.category === category)
+      const items = PROJECTS.filter((p) => p.category === category)
       return `
         <section class="catalog__section" data-section="${category}">
           <header class="catalog__header">
@@ -122,17 +113,13 @@ export function mountCatalog(root: ParentNode = document): void {
     })
     .join('')
 
-  host.innerHTML = filters + `<div class="catalog__body">${featuredSection}${body}</div>`
+  host.innerHTML = filters + `<div class="catalog__body">${body}</div>`
   wireFilters(host)
 }
 
 function wireFilters(host: HTMLElement): void {
   const chips = Array.from(host.querySelectorAll<HTMLButtonElement>('[data-filter]'))
   const sections = Array.from(host.querySelectorAll<HTMLElement>('[data-section]'))
-  const featured = host.querySelector<HTMLElement>('[data-featured-section]')
-  const featuredCards = featured
-    ? Array.from(featured.querySelectorAll<HTMLElement>('.card'))
-    : []
 
   for (const chip of chips) {
     chip.addEventListener('click', () => {
@@ -144,22 +131,11 @@ function wireFilters(host: HTMLElement): void {
         section.hidden = filter !== 'all' && section.dataset.section !== filter
       }
 
-      // The featured block spans categories, so filter its cards individually
-      // and hide the whole block only when nothing in it matches.
-      let featuredVisible = 0
-      for (const card of featuredCards) {
-        const show = filter === 'all' || card.dataset.category === filter
-        card.hidden = !show
-        if (show) featuredVisible++
-      }
-      if (featured) featured.hidden = featuredVisible === 0
-
       if (prefersReducedMotion()) return
 
-      const cards = [
-        ...featuredCards.filter((c) => !c.hidden),
-        ...sections.filter((s) => !s.hidden).flatMap((s) => Array.from(s.querySelectorAll<HTMLElement>('.card'))),
-      ]
+      const cards = sections
+        .filter((s) => !s.hidden)
+        .flatMap((s) => Array.from(s.querySelectorAll<HTMLElement>('.card')))
       animate(
         cards,
         { opacity: [0, 1], transform: ['translateY(10px) scale(0.99)', 'translateY(0) scale(1)'] },

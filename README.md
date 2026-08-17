@@ -15,7 +15,7 @@ build-on of the logo mark for the hero.
 index.html            landing page
 404.html              custom not found page
 projects/             full project catalog, filterable by category
-community/            maintainers, plus one page each
+community/            maintainers
 partials/head.html    shared <head>, injected at build time
 public/brand/         logo, project icons
 src/
@@ -48,17 +48,26 @@ Almost everything is data rather than markup, and it all lives in
 | --- | --- |
 | Projects, taglines, repository and docs and PyPI links | `PROJECTS` |
 | Human facing name when the repo name is not one | `display` on a project |
-| Which projects lead the page | any project with an `icon` |
+| Which projects lead the landing page | any project with an `icon` |
+| Who builds on our packages | `src/data/used-by.ts` |
 | Maintainers | `PEOPLE` |
 | Nav links | `NAV` |
 | Footer links | `COLUMNS` in `src/components/footer.ts` |
 
-A project is featured on the landing page and in the nav menu when it has an
-`icon`. That keeps the featured set in sync with the brand icon files under
-`public/brand/icons/` automatically, with no second list to maintain.
+A project leads the landing page and the nav menu when it has an `icon`. That
+keeps the set in sync with the brand icon files under `public/brand/icons/`
+automatically, with no second list to maintain. The full catalog on `/projects/`
+is grouped by category only — there is no separate featured block, so no card
+appears twice.
 
 Landing page statistics are counted from the catalog at runtime, so the numbers
 cannot drift from what is actually listed.
+
+`src/data/used-by.ts` is the one generated file. It comes from GitHub's
+dependency graph — the `network/dependents` listing for each repository —
+filtered to named organisations and checked one at a time against the API. Only
+pydoe, pyswarm, mcerp and soerp have any dependents, so that is what the list
+draws on. Regenerate it by hand rather than trusting it to stay current.
 
 ## Design
 

@@ -852,44 +852,32 @@
 
 /* ---- tool chips inside the marquee ------------------------------------- */
 
-.tool {
+/* ---- used by ------------------------------------------------------------ */
+
+/* Two-part label: the owner is the name worth reading, the repository is the
+   evidence for it. Both stay on one line so the marquee measures cleanly. */
+.used-by {
   display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  color: var(--ink-muted);
-  font-size: var(--text-base);
-  font-weight: 520;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.35rem 0.1rem;
   white-space: nowrap;
-  transition: color var(--dur-fast) var(--ease-out);
 }
 
-.tool:hover {
+.used-by__owner {
   color: var(--ink);
+  font-weight: 600;
 }
 
-.tool__mark {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  flex: 0 0 auto;
-  overflow: hidden;
-  border-radius: var(--radius-sm);
-  border: var(--border) solid var(--line);
-  /* Lifted off the page ground so logos with transparent backgrounds — and
-     dark marks in dark mode — still read. */
-  background: color-mix(in srgb, var(--ink) 9%, var(--bg-raised));
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  font-weight: 600;
+.used-by__name {
   color: var(--ink-faint);
 }
 
-.tool__mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.used-by:hover .used-by__owner {
+  color: var(--accent-text);
 }
+
+
 
 /* ---- spotlight surface -------------------------------------------------- */
 

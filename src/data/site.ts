@@ -42,6 +42,7 @@ export const PROJECTS: Project[] = [
   // ---- Uncertainty ------------------------------------------------------
   {
     name: 'mcerp',
+    display: 'MCERP',
     tagline: 'Monte Carlo error propagation in real time using Latin hypercube sampling',
     category: 'Uncertainty',
     github: gh('mcerp'),
@@ -51,6 +52,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: 'soerp',
+    display: 'SOERP',
     tagline: 'Second order error propagation that tracks uncertainty through models by moments',
     category: 'Uncertainty',
     github: gh('soerp'),
@@ -69,15 +71,18 @@ export const PROJECTS: Project[] = [
   },
   {
     name: 'vatic',
+    display: 'Vatic',
     tagline: 'Open source risk analysis with predictive modelling and Monte Carlo simulation',
     category: 'Uncertainty',
     github: gh('vatic'),
     pypi: 'vatic',
+    icon: 'vatic.svg',
   },
 
   // ---- Optimization -----------------------------------------------------
   {
     name: 'pyswarm',
+    display: 'PySwarm',
     tagline: 'Particle swarm optimization with a small API for constrained problems without derivatives',
     category: 'Optimization',
     github: gh('pyswarm'),
@@ -87,6 +92,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: 'pydoe',
+    display: 'PyDOE',
     tagline: 'Design of experiments with factorial, response surface, space filling, and optimal designs',
     category: 'Optimization',
     github: 'https://github.com/pydoe/pydoe',
@@ -96,6 +102,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: 'nlpql',
+    display: 'NLPQL',
     tagline: 'Sequential quadratic programming for smooth, constrained nonlinear problems',
     category: 'Optimization',
     github: gh('nlpql'),
@@ -113,6 +120,7 @@ export const PROJECTS: Project[] = [
   // ---- Numerics ---------------------------------------------------------
   {
     name: 'sdepack',
+    display: 'SDEPack',
     tagline: 'Stochastic Runge-Kutta solvers for scalar Ito SDEs, from Euler-Maruyama upward',
     category: 'Numerics',
     github: gh('sdepack'),
@@ -122,40 +130,23 @@ export const PROJECTS: Project[] = [
   },
   {
     name: 'smolpack',
+    display: 'SmolPack',
     tagline: 'Sparse grid cubature over the unit hypercube using Smolyak with Clenshaw-Curtis rules',
     category: 'Numerics',
     github: gh('smolpack'),
     docs: eggzecDocs('smolpack'),
     pypi: 'smolpack',
-  },
-  {
-    name: 'polpack',
-    tagline: 'Special functions and polynomial families over a Fortran numerical core',
-    category: 'Numerics',
-    github: gh('polpack'),
-    docs: eggzecDocs('polpack'),
+    icon: 'smolpack.svg',
   },
   {
     name: 'kronrod',
+    display: 'Kronrod',
     tagline: 'Gauss-Kronrod quadrature rule generator for reusable high accuracy integration',
     category: 'Numerics',
     github: gh('kronrod'),
     docs: eggzecDocs('kronrod'),
-  },
-  {
-    name: 'NULAPACK',
-    tagline: 'Numerical linear algebra with Fortran core subroutines and Python and C++ interfaces',
-    category: 'Numerics',
-    github: 'https://github.com/NULAPACK/NULAPACK',
-    docs: 'https://nulapack.github.io/NULAPACK/',
-  },
-  {
-    name: 'sparse_grid',
-    display: 'Sparse Grid',
-    tagline: 'Hierarchical index generation and fast hat basis evaluation in pure Python',
-    category: 'Numerics',
-    github: gh('sparse_grid'),
-    docs: eggzecDocs('sparse_grid'),
+    pypi: 'kronrod',
+    icon: 'kronrod.svg',
   },
   {
     name: 'spinterp',
@@ -163,13 +154,8 @@ export const PROJECTS: Project[] = [
     category: 'Numerics',
     github: gh('spinterp'),
     docs: eggzecDocs('spinterp'),
-  },
-  {
-    name: 'cordic',
-    tagline: 'CORDIC evaluation of trigonometric, hyperbolic, exponential, and root functions',
-    category: 'Numerics',
-    github: gh('cordic'),
-    docs: eggzecDocs('cordic'),
+    pypi: 'spinterp',
+    icon: 'spinterp.svg',
   },
 
   // ---- Tooling ----------------------------------------------------------
@@ -224,7 +210,7 @@ export const ORG = {
   name: 'eggzec',
   tagline: 'Science + Computing',
   description:
-    'A community building open source high performance scientific computing. Numerical cores in Fortran and C++, wrapped for Python, published with docs and CI.',
+    'A community building open source scientific computing and automation tools, published with documentation and CI.',
   github: 'https://github.com/eggzec',
   pypi: 'https://pypi.org/org/eggzec/',
   email: 'm.saud.zahir@gmail.com',
@@ -232,56 +218,36 @@ export const ORG = {
 } as const
 
 export interface Person {
-  slug: string
   name: string
   role: string
+  /** One paragraph, in their own terms. */
   bio: string
-  avatar: string
-  links: Array<{ label: string; href: string }>
-  stack: string[]
+  github: string
 }
 
 export const PEOPLE: Person[] = [
   {
-    slug: 'saud',
     name: 'M. Saud Zahir',
     role: 'Co-founder & maintainer',
     bio: 'Software engineer working across the full lifecycle: problem formulation, system design, implementation, optimization, and deployment. Experienced interfacing Python with C, C++, and Fortran, and writing directly in each.',
-    avatar: 'https://github.com/saudzahirr.png',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/saudzahirr' },
-      { label: 'GitLab', href: 'https://gitlab.com/saudzahirr' },
-      { label: 'PyPI', href: 'https://pypi.org/user/saudzahirr/' },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/saudzahirr/' },
-      { label: 'Email', href: 'mailto:m.saud.zahir@gmail.com' },
-    ],
-    stack: ['Python', 'C++', 'Java', 'Fortran', 'Qt'],
+    github: 'https://github.com/saudzahirr',
   },
   {
-    slug: 'laraib',
     name: 'M. Laraib Ali',
     role: 'Co-founder & maintainer',
     bio: 'Backend and systems engineer specializing in Python and Go, building reliable services and automation on Linux and containers. Works on distributed systems, PostgreSQL design, and observability through logging, tracing, and metrics.',
-    avatar: 'https://github.com/laraibg786.png',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/laraibg786' },
-      { label: 'GitLab', href: 'https://gitlab.com/laraibg786' },
-      { label: 'PyPI', href: 'https://pypi.org/user/Laraibg786/' },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/m-laraib-ali/' },
-      { label: 'Email', href: 'mailto:laraibg786@outlook.com' },
-    ],
-    stack: ['Python', 'Go', 'PostgreSQL', 'Docker', 'Linux', 'Redis'],
+    github: 'https://github.com/laraibg786',
   },
   {
-    slug: 'noor',
     name: 'Noor Mustafa',
     role: 'Maintainer',
     bio: 'Java developer focused on reliable backend applications with Spring Boot. Enjoys solving complex problems, learning continuously, and collaborating to deliver clean, maintainable software.',
-    avatar: 'https://github.com/Noor-Mustafa123.png',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/Noor-Mustafa123' },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/noormustafa715/' },
-    ],
-    stack: ['Java', 'Spring', 'Kotlin', 'Nginx', 'Python'],
+    github: 'https://github.com/Noor-Mustafa123',
+  },
+  {
+    name: 'Saif ur Rehman',
+    role: 'Maintainer',
+    bio: 'CAE engineer, researcher, and developer.',
+    github: 'https://github.com/saifrehman945',
   },
 ]

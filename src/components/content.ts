@@ -1,20 +1,19 @@
 /**
- * Data-driven page bodies: the maintainer grid and the individual maintainer
- * profiles, both read from `src/data/site.ts` so a person is described once.
+ * Data-driven page bodies: the maintainer grid, read from `src/data/site.ts`
+ * so a person is described once.
  */
 
-import { PEOPLE, PROJECTS, type Person } from '../data/site'
+import { PEOPLE, PROJECTS } from '../data/site'
+import { USED_BY, dependentName, dependentOwner } from '../data/used-by'
 
-function linkList(person: Person): string {
-  return person.links
-    .map((link) => {
-      const external = !link.href.startsWith('mailto:')
-      return `<a href="${link.href}"${external ? ' target="_blank" rel="noopener"' : ''}>${link.label}</a>`
-    })
-    .join('')
-}
-
-/** `<div data-people>` on /community/. */
+/**
+ * `<div data-people>` on /community/.
+ *
+ * A name, what they do here, and how they describe their work — nothing else.
+ * No avatar, no handle, no badge wall: a maintainer is a person to talk to, not
+ * a profile to skim, and the card links straight to where their work actually
+ * is rather than to a page about them.
+ */
 export function mountPeople(root: ParentNode = document): void {
   const host = root.querySelector<HTMLElement>('[data-people]')
   if (!host) return
@@ -23,42 +22,43 @@ export function mountPeople(root: ParentNode = document): void {
   host.innerHTML = PEOPLE.map(
     (person) => `
     <article class="person">
-      <a class="person__hit" href="/community/${person.slug}/" aria-label="${person.name}, ${person.role}"></a>
-      <img class="person__avatar" src="${person.avatar}" alt="" width="72" height="72" loading="lazy" decoding="async">
+      <a class="person__hit" href="${person.github}" target="_blank" rel="noopener" aria-label="${person.name}, ${person.role}"></a>
       <div>
         <h3 class="person__name">${person.name}</h3>
         <p class="mono person__role">${person.role}</p>
       </div>
       <p class="person__bio">${person.bio}</p>
-      <div class="tag-row">
-        ${person.stack.map((s) => `<span class="pill">${s}</span>`).join('')}
-      </div>
     </article>`,
   ).join('')
 }
 
-/** `<div data-profile="saud">` on each maintainer page. */
-export function mountProfile(root: ParentNode = document): void {
-  const host = root.querySelector<HTMLElement>('[data-profile]')
+/**
+ * `<div data-used-by>` in the hero ticker.
+ *
+ * Fills the strip before the marquee mounts, so it measures real content. Each
+ * entry links to the repository it names — the claim is checkable, which is the
+ * only reason it is worth making.
+ */
+export function mountUsedBy(root: ParentNode = document): void {
+  const host = root.querySelector<HTMLElement>('[data-used-by]')
   if (!host) return
 
-  const person = PEOPLE.find((p) => p.slug === host.dataset.profile)
-  if (!person) return
+  host.innerHTML = USED_BY.map((d) => {
+    const owner = dependentOwner(d)
+    const name = dependentName(d)
+    // Plenty of these are named after their org — printing both would just
+    // repeat the word.
+    const repo =
+      name.toLowerCase() === owner.toLowerCase()
+        ? ''
+        : `<span class="mono used-by__name">${name}</span>`
 
-  document.title = `${person.name} · eggzec`
-
-  host.classList.add('profile')
-  host.innerHTML = `
-    <img class="profile__avatar" src="${person.avatar}" alt="${person.name}" width="200" height="200">
-    <div>
-      <p class="mono section__eyebrow">${person.role}</p>
-      <h1 class="page-header__title" style="margin-bottom: var(--space-4)">${person.name}</h1>
-      <p class="prose" style="margin-bottom: var(--space-5)">${person.bio}</p>
-      <div class="lead-links" style="margin-bottom: var(--space-5)">${linkList(person)}</div>
-      <div class="tag-row">
-        ${person.stack.map((s) => `<span class="pill">${s}</span>`).join('')}
-      </div>
-    </div>`
+    return `
+      <a class="used-by" href="https://github.com/${d.repo}" target="_blank" rel="noopener"
+         title="${d.repo} — depends on ${d.uses.join(', ')}">
+        <span class="mono used-by__owner">${owner}</span>${repo}
+      </a>`
+  }).join('')
 }
 
 /**
