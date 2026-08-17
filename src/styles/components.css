@@ -854,29 +854,29 @@
 
 /* ---- used by ------------------------------------------------------------ */
 
-/* Logos are already desaturated in the file, so the strip stays even and
-   nothing flashes colour as it loads. Hover lifts contrast rather than
-   restoring colour, which would fight the palette. */
+/* Sized for a landing-page logo strip, not for GitHub's own "Used by" widget,
+   which runs at 24px because it is a dense sidebar list of user avatars. These
+   are marks meant to be recognised in passing, so they get roughly double that.
+
+   Hover darkens and nothing else. The strip is moving, so anything that changes
+   the logo's size or position under the cursor reads as a glitch. */
 .used-by {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 0.9rem;
+  padding: 0.4rem 1.15rem;
 }
 
 .used-by__logo {
   width: auto;
-  height: 34px;
-  max-width: 120px;
+  height: 52px;
+  max-width: 170px;
   object-fit: contain;
-  opacity: 0.5;
-  transition:
-    opacity var(--dur-base) var(--ease-out),
-    transform var(--dur-base) var(--ease-out);
+  opacity: 0.55;
+  transition: opacity var(--dur-base) var(--ease-out);
 }
 
 .used-by:hover .used-by__logo {
-  opacity: 0.95;
-  transform: scale(1.06);
+  opacity: 1;
 }
 
 /* ---- spotlight surface -------------------------------------------------- */

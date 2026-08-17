@@ -49,7 +49,7 @@ export function mountUsedBy(root: ParentNode = document): void {
       <a class="used-by" href="https://github.com/${d.repo}" target="_blank" rel="noopener"
          title="${d.name} uses ${d.uses} in ${d.repo}">
         <img class="used-by__logo" src="/brand/users/${d.login.toLowerCase()}.png"
-             alt="${d.name}" width="34" height="34" loading="lazy" decoding="async">
+             alt="${d.name}" width="52" height="52" loading="lazy" decoding="async">
       </a>`,
   ).join('')
 }
