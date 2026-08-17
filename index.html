@@ -17,7 +17,7 @@
       <!-- ================= HERO ================= -->
       <section class="hero" data-spotlight>
         <div class="hero__grid" aria-hidden="true"></div>
-        <div class="hero__field" data-mark-draw aria-hidden="true"></div>
+        <div class="hero__field" data-draw-field="hero" aria-hidden="true"></div>
 
         <div class="container hero__inner">
           <p class="mono pill hero__eyebrow" data-reveal>
@@ -28,18 +28,19 @@
           <div
             class="display hero__display"
             data-display
-            data-lines="OPEN SOURCE|SCIENTIFIC|COMPUTING"
-            data-knockout="0:3,2:8"
+            data-lines="OPEN SOURCE|SCIENTIFIC|COMPUTING AND|AUTOMATION TOOLS"
+            data-knockout="0:3,3:10"
             role="heading"
             aria-level="1"
-            aria-label="Open source scientific computing"
+            aria-label="Open source scientific computing and automation tools"
           ></div>
 
           <p class="hero__lede" data-reveal data-reveal-delay="220">
             We build the numerical layer:
             <strong>Fortran and C++ cores wrapped for Python</strong>, with uncertainty
-            propagation, design of experiments, and optimization on top. Everything is
-            published to PyPI, documented, and tested on every push.
+            propagation, design of experiments, and optimization on top. Alongside it we
+            write the automation we need ourselves, in Python and Go. Everything is
+            published, documented, and tested on every push.
           </p>
 
           <div class="button-row hero__actions" data-reveal data-reveal-delay="300">
@@ -220,7 +221,7 @@
       <section class="section">
         <div class="container">
           <div class="cta" data-reveal>
-            <div class="cta__field" data-mark-draw data-cells="false" aria-hidden="true"></div>
+            <div class="cta__field" data-draw-field="panel" aria-hidden="true"></div>
             <div class="cta__inner">
               <h2 class="cta__title">Start with a repository</h2>
               <p class="cta__body">
@@ -248,6 +249,7 @@
 
     <footer data-footer></footer>
     <script type="module" src="/src/main.ts"></script>
+
 
   </body>
 </html>

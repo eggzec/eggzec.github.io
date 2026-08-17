@@ -86,7 +86,11 @@
   }
 }
 
+/* Block lettering scales to its container, so the cap height is set by this
+   width and nothing else. Four lines want to sit smaller than three did, and
+   holding it back from the full measure also leaves the plate room to read. */
 .hero__display {
+  width: min(100%, 860px);
   margin-block: var(--space-2);
 }
 
