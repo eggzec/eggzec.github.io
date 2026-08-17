@@ -1,55 +1,46 @@
 /**
- * Who builds on these packages.
+ * Organisations that build on these packages.
  *
- * Read off GitHub's dependency graph — the `network/dependents` listing for
- * each repository — then filtered to named organisations and projects and
- * checked against the API one at a time, so every entry here is a repository
- * that really does declare one of ours as a dependency. Individual paper and
- * course repositories are real dependents too, and there are far more of them,
- * but they are not what "used by" is claiming.
+ * Every entry was verified against GitHub's live dependency graph, one
+ * repository at a time: either the SBOM for that repository lists the package,
+ * or its manifest on the default branch declares it. Entries that only appeared
+ * in the dependents *index* did not survive — that index lags, and several of
+ * them had since dropped the dependency or commented it out. Anything that
+ * could not be confirmed was left off, however good the name would have looked.
  *
- * Only four projects have any dependents at all: pydoe (1,203 dependents), pyswarm, mcerp
- * and soerp. The rest are too new or too specialised to have been picked up,
- * and padding the list would defeat the point of having one.
+ * Only pydoe and pyswarm have organisational users. mcerp and soerp have
+ * dependents, but individuals rather than organisations.
  *
- * Star counts are a snapshot, taken when this file was generated. They are only
- * used for ordering, so they can drift without the page becoming wrong.
+ * Logos are the organisations' own GitHub avatars, desaturated at build time
+ * rather than in CSS so the strip stays even and nothing flashes colour while
+ * it loads.
  */
 
 export interface Dependent {
-  /** `owner/repo` on GitHub. */
+  /** GitHub org, and the basename of its logo under `/brand/users/`. */
+  login: string
+  name: string
+  /** The repository the dependency was verified in. */
   repo: string
-  stars: number
-  /** Which of ours it depends on. */
-  uses: string[]
+  uses: string
 }
 
 export const USED_BY: Dependent[] = [
-  { repo: 'cmu-db/ottertune', stars: 1232, uses: ['pydoe'] },
-  { repo: 'SheffieldML/GPyOpt', stars: 946, uses: ['pydoe'] },
-  { repo: 'SMTorg/smt', stars: 905, uses: ['pydoe'] },
-  { repo: 'OpenMDAO/OpenMDAO', stars: 771, uses: ['pydoe'] },
-  { repo: 'DataCanvasIO/DeepTables', stars: 705, uses: ['pydoe'] },
-  { repo: 'EmuKit/emukit', stars: 673, uses: ['pydoe'] },
-  { repo: 'SDXorg/pysd', stars: 460, uses: ['pydoe'] },
-  { repo: 'SURGroup/UQpy', stars: 362, uses: ['pydoe'] },
-  { repo: 'terrapower/armi', stars: 273, uses: ['pydoe'] },
-  { repo: 'IBM/simulai', stars: 202, uses: ['pydoe'] },
-  { repo: 'MLBazaar/BTB', stars: 176, uses: ['pydoe'] },
-  { repo: 'Photon-AI-Research/NeuralSolvers', stars: 173, uses: ['pydoe'] },
-  { repo: 'llnl/merlin', stars: 151, uses: ['pydoe'] },
-  { repo: 'TemoaProject/temoa', stars: 113, uses: ['pydoe'] },
-  { repo: 'llnl/zero-rk', stars: 46, uses: ['pydoe'] },
-  { repo: 'nanograv/holodeck', stars: 40, uses: ['pydoe'] },
-  { repo: 'gemseo/gemseo', stars: 34, uses: ['pydoe'] },
-  { repo: 'paypal/gators', stars: 26, uses: ['pydoe'] },
-  { repo: 'nasa/GlennOPT', stars: 25, uses: ['pydoe'] },
-  { repo: 'sandialabs/pvOps', stars: 21, uses: ['pydoe'] },
-  { repo: 'llnl/merlin-spellbook', stars: 8, uses: ['pydoe'] },
-  { repo: 'industrial-optimization-group/pyRVEA', stars: 3, uses: ['pydoe'] },
-  { repo: 'lanl/bohydra', stars: 1, uses: ['pydoe'] },
+  { login: 'nasa', name: 'NASA', repo: 'nasa/GlennOPT', uses: 'pyDOE' },
+  { login: 'llnl', name: 'Lawrence Livermore National Laboratory', repo: 'llnl/merlin', uses: 'pyDOE' },
+  { login: 'lanl', name: 'Los Alamos National Laboratory', repo: 'lanl/impala', uses: 'pyswarm' },
+  { login: 'sandialabs', name: 'Sandia National Laboratories', repo: 'sandialabs/pvOps', uses: 'pyDOE' },
+  { login: 'OpenMDAO', name: 'OpenMDAO', repo: 'OpenMDAO/OpenMDAO', uses: 'pyDOE' },
+  { login: 'philipmorrisintl', name: 'Philip Morris International', repo: 'philipmorrisintl/GOBench', uses: 'pyswarm' },
+  { login: 'cmu-db', name: 'CMU Database Group', repo: 'cmu-db/ottertune', uses: 'pyDOE' },
+  { login: 'qubole', name: 'Qubole', repo: 'qubole/uchit', uses: 'pyDOE' },
+  { login: 'codecentric', name: 'codecentric', repo: 'codecentric/maximum-entropy', uses: 'pyswarm' },
+  { login: 'ICRAR', name: 'ICRAR', repo: 'ICRAR/daliuge', uses: 'pyswarm' },
+  { login: 'EMSL-Computing', name: 'EMSL Computing', repo: 'EMSL-Computing/CoreMS', uses: 'pyswarm' },
+  { login: 'National-Digital-Twin', name: 'National Digital Twin', repo: 'National-Digital-Twin/NOVA', uses: 'pyswarm' },
+  { login: 'gemseo', name: 'GEMSEO', repo: 'gemseo/gemseo', uses: 'pyDOE' },
+  { login: 'SMTorg', name: 'SMT', repo: 'SMTorg/smt', uses: 'pyDOE' },
+  { login: 'ICB-DCM', name: 'ICB-DCM', repo: 'ICB-DCM/pyPESTO', uses: 'pyswarm' },
+  { login: 'openworm', name: 'OpenWorm', repo: 'openworm/ChannelWorm', uses: 'pyswarm' },
+  { login: 'wwu-mmll', name: 'Medical Machine Learning Lab', repo: 'wwu-mmll/photonai', uses: 'pyDOE' },
 ]
-
-/** `owner/repo` split for display — the owner is the name worth showing. */
-export const dependentOwner = (d: Dependent): string => d.repo.split('/')[0] ?? d.repo
-export const dependentName = (d: Dependent): string => d.repo.split('/')[1] ?? d.repo

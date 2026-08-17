@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'pyswarm',
     display: 'PySwarm',
-    tagline: 'Particle swarm optimization with a small API for constrained problems without derivatives',
+    tagline: 'Particle swarm optimization with built-in support for constraints',
     category: 'Optimization',
     github: gh('pyswarm'),
     docs: eggzecDocs('pyswarm'),
@@ -248,13 +248,13 @@ export const PEOPLE: Person[] = [
   {
     name: 'Noor Mustafa',
     role: 'Maintainer',
-    bio: 'Java developer focused on reliable backend applications with Spring Boot. Enjoys solving complex problems, learning continuously, and collaborating to deliver clean, maintainable software.',
+    bio: 'Python and Java developer, building reliable backend applications and the services around them.',
     github: 'https://github.com/Noor-Mustafa123',
   },
   {
     name: 'Saif ur Rehman',
     role: 'Maintainer',
-    bio: 'CAE engineer, researcher, and developer.',
+    bio: 'Python and C++ developer working in CAE: computational fluid dynamics, numerical codes, and simulation.',
     github: 'https://github.com/saifrehman945',
   },
 ]

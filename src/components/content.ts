@@ -4,7 +4,7 @@
  */
 
 import { PEOPLE, PROJECTS } from '../data/site'
-import { USED_BY, dependentName, dependentOwner } from '../data/used-by'
+import { USED_BY } from '../data/used-by'
 
 /**
  * `<div data-people>` on /community/.
@@ -35,30 +35,23 @@ export function mountPeople(root: ParentNode = document): void {
 /**
  * `<div data-used-by>` in the hero ticker.
  *
- * Fills the strip before the marquee mounts, so it measures real content. Each
- * entry links to the repository it names — the claim is checkable, which is the
- * only reason it is worth making.
+ * Logos rather than names: at a glance a reader recognises a mark faster than
+ * they read an org login. Filled before the marquee mounts so it measures real
+ * content, and each one links to the repository the dependency was verified in,
+ * because a claim like this is only worth making if it can be checked.
  */
 export function mountUsedBy(root: ParentNode = document): void {
   const host = root.querySelector<HTMLElement>('[data-used-by]')
   if (!host) return
 
-  host.innerHTML = USED_BY.map((d) => {
-    const owner = dependentOwner(d)
-    const name = dependentName(d)
-    // Plenty of these are named after their org — printing both would just
-    // repeat the word.
-    const repo =
-      name.toLowerCase() === owner.toLowerCase()
-        ? ''
-        : `<span class="mono used-by__name">${name}</span>`
-
-    return `
+  host.innerHTML = USED_BY.map(
+    (d) => `
       <a class="used-by" href="https://github.com/${d.repo}" target="_blank" rel="noopener"
-         title="${d.repo} — depends on ${d.uses.join(', ')}">
-        <span class="mono used-by__owner">${owner}</span>${repo}
-      </a>`
-  }).join('')
+         title="${d.name} uses ${d.uses} in ${d.repo}">
+        <img class="used-by__logo" src="/brand/users/${d.login.toLowerCase()}.png"
+             alt="${d.name}" width="34" height="34" loading="lazy" decoding="async">
+      </a>`,
+  ).join('')
 }
 
 /**

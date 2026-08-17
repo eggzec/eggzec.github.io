@@ -854,30 +854,30 @@
 
 /* ---- used by ------------------------------------------------------------ */
 
-/* Two-part label: the owner is the name worth reading, the repository is the
-   evidence for it. Both stay on one line so the marquee measures cleanly. */
+/* Logos are already desaturated in the file, so the strip stays even and
+   nothing flashes colour as it loads. Hover lifts contrast rather than
+   restoring colour, which would fight the palette. */
 .used-by {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  padding: 0.35rem 0.1rem;
-  white-space: nowrap;
+  align-items: center;
+  padding: 0.4rem 0.9rem;
 }
 
-.used-by__owner {
-  color: var(--ink);
-  font-weight: 600;
+.used-by__logo {
+  width: auto;
+  height: 34px;
+  max-width: 120px;
+  object-fit: contain;
+  opacity: 0.5;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
 }
 
-.used-by__name {
-  color: var(--ink-faint);
+.used-by:hover .used-by__logo {
+  opacity: 0.95;
+  transform: scale(1.06);
 }
-
-.used-by:hover .used-by__owner {
-  color: var(--accent-text);
-}
-
-
 
 /* ---- spotlight surface -------------------------------------------------- */
 
