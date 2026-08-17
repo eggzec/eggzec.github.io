@@ -371,6 +371,21 @@
   opacity: 0;
 }
 
+/* ---- pollen ------------------------------------------------------------- */
+
+/* Fixed rather than scrolled: the page moves past the grains the way a glass
+   of water stays put while you turn it. Negative z-index keeps it behind every
+   section's content but above the page ground, and nothing on it is clickable —
+   the cursor is read from `window`, not from this element. */
+.pollen {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
 /* ---- draw field --------------------------------------------------------- */
 
 /* The plate plays once and holds. Delays come from a `--i` index on each
