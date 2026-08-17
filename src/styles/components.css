@@ -371,19 +371,38 @@
   opacity: 0;
 }
 
-/* ---- pollen ------------------------------------------------------------- */
+/* ---- motes -------------------------------------------------------------- */
 
-/* Fixed rather than scrolled: the page moves past the grains the way a glass
-   of water stays put while you turn it. Negative z-index keeps it behind every
-   section's content but above the page ground, and nothing on it is clickable —
-   the cursor is read from `window`, not from this element. */
-.pollen {
+/* Fixed rather than scrolled: the page moves past the specks the way a glass of
+   water stays put while you turn it. The negative z-index is what puts them back
+   stage — behind every section's content, and behind the hero plate too, which
+   is its own stacking context — while still sitting above the page ground.
+   Nothing here is clickable; the cursor is read from `window`.
+
+   The header bar is translucent on purpose, so anything behind it shows through
+   the blur and reads as sitting *on* the header. Rather than making the bar
+   opaque and losing that, the field is masked out of the band the header can
+   occupy, measured against its tallest unscrolled height so the exclusion still
+   holds once it shrinks. */
+.motes {
   position: fixed;
   inset: 0;
   z-index: -1;
   width: 100%;
   height: 100%;
   pointer-events: none;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent var(--nav-h-top),
+    #000 calc(var(--nav-h-top) + 72px)
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent var(--nav-h-top),
+    #000 calc(var(--nav-h-top) + 72px)
+  );
 }
 
 /* ---- draw field --------------------------------------------------------- */
