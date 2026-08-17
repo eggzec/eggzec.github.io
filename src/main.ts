@@ -22,7 +22,7 @@ import { mountDrawFields } from './components/draw-field'
 import { mountMarquees } from './components/marquee'
 import { mountPixelRules } from './components/pixel-rule'
 import { mountPointerEffects } from './components/pointer'
-import { mountPollen } from './components/pollen'
+import { mountMotes } from './components/motes'
 import { mountFeaturedGrid, mountCatalog } from './components/project-cards'
 import { mountPeople, mountProfile, syncStats } from './components/content'
 import { defineEggzecText } from './lib/eggzec-block'
@@ -80,7 +80,7 @@ function boot(): void {
   mountReveals()
   mountCounters()
   mountPointerEffects()
-  mountPollen()
+  mountMotes()
   mountSmoothScroll()
 
   document.documentElement.dataset.ready = 'true'

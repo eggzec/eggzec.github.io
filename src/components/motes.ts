@@ -1,16 +1,16 @@
 /**
- * Pollen — grains suspended across the whole page.
+ * Motes — specks suspended across the whole page.
  *
- * The plate in the hero already carries a few grains off its Wiener path. This
- * is the same idea at page scale: a fixed layer behind every section, holding
- * pollen in water. Each grain integrates a damped random walk, which is what
- * Brownian motion actually is — momentum plus a fresh impulse every step — so
- * the drift wanders instead of oscillating the way a looped keyframe would.
+ * A fixed layer behind every section, holding dust in water. Each speck
+ * integrates a damped random walk, which is what Brownian motion actually is —
+ * momentum plus a fresh impulse every step — so the drift wanders instead of
+ * oscillating the way a looped keyframe would.
  *
- * The cursor is a disturbance in that water. Grains inside its radius are
- * pushed off it and *excite*: they brighten, swell, spin up, and switch to
- * their sharp pixel form. Excitement decays on its own, so a grain settles back
- * to a soft drifting speck a second or so after the cursor has gone.
+ * They are deliberately far back: small, plain circles, faint enough to read as
+ * depth rather than as content. The cursor is the only thing that brings one
+ * forward — specks inside its radius are pushed off it and *excite*, growing
+ * and brightening, then decaying back to a drifting speck a second or so after
+ * the cursor has gone.
  *
  * One canvas, one loop, one pass per frame. The loop stops when the tab is
  * hidden, and never starts at all under reduced motion — that case gets a
@@ -19,10 +19,10 @@
 
 import { isCoarsePointer, prefersReducedMotion } from '../lib/env'
 
-/** Grains per million device-independent pixels of viewport. */
-const DENSITY = 115
-const MIN_GRAINS = 40
-const MAX_GRAINS = 240
+/** Motes per million device-independent pixels of viewport. */
+const DENSITY = 150
+const MIN_MOTES = 50
+const MAX_MOTES = 320
 
 /** How far the cursor reaches, in CSS pixels. */
 const CURSOR_RADIUS = 140
@@ -32,34 +32,30 @@ const CURSOR_PUSH = 0.34
 const JITTER = 0.055
 /** Velocity retained each frame — under 1, or the walk runs away. */
 const DAMPING = 0.955
-/** Ceiling on speed, so a fast cursor cannot fling a grain off screen. */
+/** Ceiling on speed, so a fast cursor cannot fling a mote off screen. */
 const MAX_SPEED = 2.6
 /** Excitement lost per frame; roughly a second back to rest. */
 const CALM = 0.978
 
-type Shape = 'dot' | 'pixel' | 'cross'
-
-interface Grain {
+interface Mote {
   x: number
   y: number
   vx: number
   vy: number
-  size: number
-  /** Base opacity when at rest. */
+  /** Radius at rest, in CSS pixels. */
+  radius: number
+  /** Base opacity at rest. */
   alpha: number
   hue: string
-  shape: Shape
-  angle: number
-  spin: number
   /** 0 at rest, 1 just disturbed. */
   heat: number
 }
 
-export class PollenField {
+export class MoteField {
   readonly #canvas: HTMLCanvasElement
   readonly #ctx: CanvasRenderingContext2D
 
-  #grains: Grain[] = []
+  #motes: Mote[] = []
   #width = 0
   #height = 0
   #dpr = 1
@@ -74,11 +70,11 @@ export class PollenField {
   constructor(canvas: HTMLCanvasElement) {
     this.#canvas = canvas
     const ctx = canvas.getContext('2d', { alpha: true })
-    if (!ctx) throw new Error('PollenField: 2D canvas context unavailable')
+    if (!ctx) throw new Error('MoteField: 2D canvas context unavailable')
     this.#ctx = ctx
 
     // Kiwi is a field colour, not a hairline one — it vanishes on white at this
-    // size, so the grains take the three hues that hold.
+    // size, so the motes take the three hues that hold.
     const cs = getComputedStyle(document.documentElement)
     const read = (name: string, fallback: string) =>
       cs.getPropertyValue(name).trim() || fallback
@@ -135,37 +131,33 @@ export class PollenField {
 
   #count(): number {
     const area = (this.#width * this.#height) / 1_000_000
-    return Math.max(MIN_GRAINS, Math.min(MAX_GRAINS, Math.round(area * DENSITY)))
+    return Math.max(MIN_MOTES, Math.min(MAX_MOTES, Math.round(area * DENSITY)))
   }
 
   #seed(): void {
     const target = this.#count()
-    const shapes: Shape[] = ['dot', 'dot', 'pixel', 'cross']
 
     // Grow or trim rather than rebuilding, so a resize does not teleport every
-    // grain that was already on screen.
-    while (this.#grains.length > target) this.#grains.pop()
+    // mote that was already on screen.
+    while (this.#motes.length > target) this.#motes.pop()
 
-    while (this.#grains.length < target) {
-      const i = this.#grains.length
-      this.#grains.push({
+    while (this.#motes.length < target) {
+      const i = this.#motes.length
+      this.#motes.push({
         x: Math.random() * this.#width,
         y: Math.random() * this.#height,
         vx: (Math.random() - 0.5) * 0.24,
         vy: (Math.random() - 0.5) * 0.24,
-        size: 2.2 + Math.random() * 4.4,
-        alpha: 0.2 + Math.random() * 0.3,
+        radius: 0.7 + Math.random() * 1.35,
+        alpha: 0.13 + Math.random() * 0.2,
         hue: this.#palette[i % this.#palette.length]!,
-        shape: shapes[i % shapes.length]!,
-        angle: Math.random() * Math.PI,
-        spin: (Math.random() - 0.5) * 0.006,
         heat: 0,
       })
     }
 
-    for (const grain of this.#grains) {
-      grain.x = Math.min(grain.x, this.#width)
-      grain.y = Math.min(grain.y, this.#height)
+    for (const mote of this.#motes) {
+      mote.x = Math.min(mote.x, this.#width)
+      mote.y = Math.min(mote.y, this.#height)
     }
   }
 
@@ -179,45 +171,44 @@ export class PollenField {
   #step(): void {
     const { x: px, y: py, active } = this.#pointer
 
-    for (const grain of this.#grains) {
+    for (const mote of this.#motes) {
       // The random walk: a fresh impulse every frame, momentum carried over,
       // and damping so speed stays bounded without clamping it by hand.
-      grain.vx = (grain.vx + (Math.random() - 0.5) * JITTER) * DAMPING
-      grain.vy = (grain.vy + (Math.random() - 0.5) * JITTER) * DAMPING
+      mote.vx = (mote.vx + (Math.random() - 0.5) * JITTER) * DAMPING
+      mote.vy = (mote.vy + (Math.random() - 0.5) * JITTER) * DAMPING
 
       if (active) {
-        const dx = grain.x - px
-        const dy = grain.y - py
+        const dx = mote.x - px
+        const dy = mote.y - py
         const dist = Math.hypot(dx, dy)
 
         if (dist < CURSOR_RADIUS && dist > 0.001) {
           // Falls off with distance, so the edge of the reach is a nudge and
           // the centre is a shove.
           const force = (1 - dist / CURSOR_RADIUS) ** 2 * CURSOR_PUSH
-          grain.vx += (dx / dist) * force
-          grain.vy += (dy / dist) * force
-          grain.heat = Math.min(1, grain.heat + force * 2.2)
+          mote.vx += (dx / dist) * force
+          mote.vy += (dy / dist) * force
+          mote.heat = Math.min(1, mote.heat + force * 2.2)
         }
       }
 
       // Push is bounded, and the walk itself refills the void the cursor
       // leaves behind — that is what diffusion does, given a moment.
-      const speed = Math.hypot(grain.vx, grain.vy)
+      const speed = Math.hypot(mote.vx, mote.vy)
       if (speed > MAX_SPEED) {
-        grain.vx = (grain.vx / speed) * MAX_SPEED
-        grain.vy = (grain.vy / speed) * MAX_SPEED
+        mote.vx = (mote.vx / speed) * MAX_SPEED
+        mote.vy = (mote.vy / speed) * MAX_SPEED
       }
 
-      grain.x += grain.vx
-      grain.y += grain.vy
-      grain.angle += grain.spin + grain.heat * 0.05
-      grain.heat *= CALM
+      mote.x += mote.vx
+      mote.y += mote.vy
+      mote.heat *= CALM
 
       // Wrap, so the field never thins out at the edges.
-      if (grain.x < -12) grain.x = this.#width + 12
-      else if (grain.x > this.#width + 12) grain.x = -12
-      if (grain.y < -12) grain.y = this.#height + 12
-      else if (grain.y > this.#height + 12) grain.y = -12
+      if (mote.x < -12) mote.x = this.#width + 12
+      else if (mote.x > this.#width + 12) mote.x = -12
+      if (mote.y < -12) mote.y = this.#height + 12
+      else if (mote.y > this.#height + 12) mote.y = -12
     }
   }
 
@@ -225,36 +216,17 @@ export class PollenField {
     const ctx = this.#ctx
     ctx.clearRect(0, 0, this.#width, this.#height)
 
-    for (const grain of this.#grains) {
-      const heat = grain.heat
-      const size = grain.size * (1 + heat * 0.85)
-      const half = size / 2
+    // Circles only, and no transform stack: at this size anything with a
+    // corner reads as an artefact rather than as a speck.
+    for (const mote of this.#motes) {
+      const heat = mote.heat
 
-      ctx.globalAlpha = Math.min(1, grain.alpha + heat * 0.55)
-      ctx.fillStyle = grain.hue
+      ctx.globalAlpha = Math.min(0.9, mote.alpha + heat * 0.5)
+      ctx.fillStyle = mote.hue
 
-      ctx.save()
-      ctx.translate(grain.x, grain.y)
-      ctx.rotate(grain.angle)
-
-      // Disturbed grains snap to the sharp pixel form; at rest they are soft.
-      const shape = heat > 0.35 ? 'pixel' : grain.shape
-
-      if (shape === 'dot') {
-        ctx.beginPath()
-        ctx.arc(0, 0, half, 0, Math.PI * 2)
-        ctx.fill()
-      } else if (shape === 'cross') {
-        const arm = half * 0.42
-        ctx.fillRect(-half, -arm, size, arm * 2)
-        ctx.fillRect(-arm, -half, arm * 2, size)
-      } else {
-        ctx.beginPath()
-        ctx.roundRect(-half, -half, size, size, Math.max(0.5, half * 0.32))
-        ctx.fill()
-      }
-
-      ctx.restore()
+      ctx.beginPath()
+      ctx.arc(mote.x, mote.y, mote.radius * (1 + heat * 1.3), 0, Math.PI * 2)
+      ctx.fill()
     }
 
     ctx.globalAlpha = 1
@@ -287,16 +259,16 @@ export class PollenField {
   }
 }
 
-/** Mount the page-wide pollen layer. Idempotent. */
-export function mountPollen(): PollenField | null {
-  if (document.querySelector('.pollen')) return null
+/** Mount the page-wide mote layer. Idempotent. */
+export function mountMotes(): MoteField | null {
+  if (document.querySelector('.motes')) return null
 
   const canvas = document.createElement('canvas')
-  canvas.className = 'pollen'
+  canvas.className = 'motes'
   canvas.setAttribute('aria-hidden', 'true')
   document.body.prepend(canvas)
 
-  const field = new PollenField(canvas)
+  const field = new MoteField(canvas)
   field.start()
   return field
 }
