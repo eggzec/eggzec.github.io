@@ -179,6 +179,7 @@ export const PROJECTS: Project[] = [
     category: 'Tooling',
     github: gh('gnspy'),
     pypi: 'gnspy',
+    icon: 'gnspy.svg',
   },
 ]
 
@@ -186,11 +187,17 @@ export const PROJECTS: Project[] = [
 export const projectLabel = (project: Project): string => project.display ?? project.name
 
 /**
- * Featured = the projects with a hand-drawn brand icon. That is the honest
- * signal of which ones we have invested in, and it keeps the landing grid and
- * the nav menu in sync with the icon set automatically.
+ * What the landing page leads with, in this order.
+ *
+ * This used to be derived from which projects had a brand icon. Nearly all of
+ * them do now, so that signal stopped selecting anything — a lead set is a
+ * decision about what to show a first-time visitor, and it is made here.
  */
-export const FEATURED = PROJECTS.filter((p) => p.icon)
+const LEAD = ['pydoe', 'ad', 'pyswarm', 'soerp', 'mcerp', 'bb']
+
+export const FEATURED: Project[] = LEAD.map((name) =>
+  PROJECTS.find((project) => project.name === name),
+).filter((project): project is Project => project !== undefined)
 
 /** The nav dropdown stays short — four, then a link to the full catalog. */
 export const NAV_MENU = FEATURED.slice(0, 4)

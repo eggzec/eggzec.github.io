@@ -48,17 +48,18 @@ Almost everything is data rather than markup, and it all lives in
 | --- | --- |
 | Projects, taglines, repository and docs and PyPI links | `PROJECTS` |
 | Human facing name when the repo name is not one | `display` on a project |
-| Which projects lead the landing page | any project with an `icon` |
+| Which projects lead the landing page | `LEAD` in `src/data/site.ts` |
 | Who builds on our packages | `src/data/used-by.ts` |
 | Maintainers | `PEOPLE` |
 | Nav links | `NAV` |
 | Footer links | `COLUMNS` in `src/components/footer.ts` |
 
-A project leads the landing page and the nav menu when it has an `icon`. That
-keeps the set in sync with the brand icon files under `public/brand/icons/`
-automatically, with no second list to maintain. The full catalog on `/projects/`
-is grouped by category only — there is no separate featured block, so no card
-appears twice.
+`LEAD` names the projects the landing page and the nav menu open with, in
+order. That used to be derived from which projects carried a brand icon, but
+nearly all of them do now, so it stopped selecting anything — what a first-time
+visitor should see first is a decision, not a side effect. The full catalog on
+`/projects/` is grouped by category only, with no separate featured block, so no
+card appears twice.
 
 Landing page statistics are counted from the catalog at runtime, so the numbers
 cannot drift from what is actually listed.
