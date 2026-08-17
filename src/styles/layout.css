@@ -445,12 +445,8 @@ html.is-nav-open body {
   -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
 }
 
-.site-footer__rule canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
+.site-footer__rule .mark-draw__svg {
+  opacity: 0.55;
 }
 
 .site-footer__bottom {

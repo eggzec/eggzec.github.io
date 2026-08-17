@@ -371,20 +371,182 @@
   opacity: 0;
 }
 
-/* ---- life field -------------------------------------------------------- */
+/* ---- mark draw ---------------------------------------------------------- */
 
-.life-field {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+/* The composition plays once, on the timings the reference uses: traces run in
+   first, the bar stack fills the egg behind them, the silhouette is traced, and
+   the byte cells land last. Delays come from a `--i` index on each element, so
+   the whole sequence is CSS and JS only flips `is-playing`. */
+
+/* The host keeps whatever box its own page rule gave it — the footer rule is a
+   54px strip in flow, the hero field is an absolute panel — so only the SVG is
+   positioned here. */
+.mark-draw {
   pointer-events: none;
   overflow: hidden;
 }
 
-.life-field canvas {
+.mark-draw__svg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  pointer-events: auto;
+  overflow: visible;
+}
+
+.mark-draw__svg--rule {
+  overflow: hidden;
+}
+
+/* Paused until the host scrolls in — a paused animation holds its start frame
+   and does not burn through its delay, so this is the whole "not yet" state. */
+.mark-draw [class^='mark-draw__'] {
+  animation-play-state: paused;
+}
+
+.mark-draw.is-playing [class^='mark-draw__'] {
+  animation-play-state: running;
+}
+
+/* -- traces --------------------------------------------------------------- */
+
+.mark-draw__trace {
+  fill: none;
+  stroke: var(--mark-trace);
+  stroke-width: 0.13;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1 1;
+  animation: mark-trace 1.5s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 0.16s);
+}
+
+.mark-draw__svg--rule .mark-draw__trace {
+  stroke-width: 0.5;
+  animation-duration: 2.2s;
+  animation-delay: calc(var(--i, 0) * 0.24s);
+}
+
+/* -- bar stack ------------------------------------------------------------ */
+
+/* Two moves in one keyframe track, because both write `transform`: the bar
+   grows out from the centre line, waits, then swells vertically to close the
+   gap to its neighbours so the stack resolves into a solid mark. */
+.mark-draw__bar {
+  fill: var(--mark-fill);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mark-bar 1.9s both;
+  animation-delay: calc(0.45s + var(--i, 0) * 0.115s);
+}
+
+/* -- silhouette ----------------------------------------------------------- */
+
+.mark-draw__outline {
+  fill: none;
+  stroke: var(--mark-line);
+  stroke-width: 0.14;
+  stroke-dasharray: 1 1;
+  animation: mark-trace 1.6s var(--ease-out) both;
+  animation-delay: 1.1s;
+}
+
+/* -- sparks and cells ----------------------------------------------------- */
+
+.mark-draw__spark {
+  fill: var(--mark-spark);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mark-spark 0.7s var(--ease-out) both;
+  animation-delay: calc(1.45s + var(--i, 0) * 0.16s);
+}
+
+.mark-draw__svg--rule .mark-draw__spark {
+  animation-delay: calc(1.1s + var(--i, 0) * 0.22s);
+}
+
+.mark-draw__cell {
+  fill: var(--mark-spark);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mark-cell 0.55s var(--ease-spring) both;
+  animation-delay: calc(2.9s + var(--i, 0) * 0.085s);
+}
+
+@keyframes mark-trace {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* The reference's own easing, read off the Lottie keyframes. */
+@keyframes mark-bar {
+  0% {
+    transform: scaleX(0) scaleY(1);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.07, 0.95);
+  }
+  39% {
+    transform: scaleX(1) scaleY(1);
+    animation-timing-function: linear;
+  }
+  71% {
+    transform: scaleX(1) scaleY(1);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  /* Slightly past the row pitch, so neighbours overlap and the rounded bar
+     ends stop notching the silhouette. */
+  100% {
+    transform: scaleX(1) scaleY(1.78);
+  }
+}
+
+@keyframes mark-spark {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.7);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+@keyframes mark-cell {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Reduced motion gets the finished frame, never the build. */
+.mark-draw.is-static [class^='mark-draw__'] {
+  animation: none;
+}
+
+.mark-draw.is-static .mark-draw__bar {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scaleY(1.78);
+}
+
+.mark-draw.is-static .mark-draw__trace,
+.mark-draw.is-static .mark-draw__outline {
+  stroke-dasharray: none;
+}
+
+.mark-draw.is-static .mark-draw__spark {
+  opacity: 0.8;
 }
 
 /* ---- stats ------------------------------------------------------------- */

@@ -17,9 +17,7 @@
       <!-- ================= HERO ================= -->
       <section class="hero" data-spotlight>
         <div class="hero__grid" aria-hidden="true"></div>
-        <div class="hero__field" aria-hidden="true">
-          <canvas data-life-field data-cell="18" data-tps="8" data-density="0.13" data-intensity="0.42"></canvas>
-        </div>
+        <div class="hero__field" data-mark-draw aria-hidden="true"></div>
 
         <div class="container hero__inner">
           <p class="mono pill hero__eyebrow" data-reveal>
@@ -222,9 +220,7 @@
       <section class="section">
         <div class="container">
           <div class="cta" data-reveal>
-            <div class="cta__field" aria-hidden="true">
-              <canvas data-life-field data-cell="14" data-tps="7" data-density="0.14" data-intensity="0.4" data-interactive="false"></canvas>
-            </div>
+            <div class="cta__field" data-mark-draw data-cells="false" aria-hidden="true"></div>
             <div class="cta__inner">
               <h2 class="cta__title">Start with a repository</h2>
               <p class="cta__body">
@@ -252,5 +248,6 @@
 
     <footer data-footer></footer>
     <script type="module" src="/src/main.ts"></script>
+
   </body>
 </html>

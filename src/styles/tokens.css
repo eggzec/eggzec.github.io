@@ -51,10 +51,13 @@
   --spark: var(--magenta);
   --heat: var(--orange);
 
-  /* Life field: kiwi disappears on white, so the automaton runs in violet
-     and flashes magenta on birth. */
-  --field-live: var(--violet);
-  --field-born: var(--magenta);
+  /* Mark draw: the egg fills in kiwi the way it does in the logo, and the
+     linework that draws it is violet, because kiwi cannot hold a hairline on
+     white. Sparks and the byte cells stay magenta. */
+  --mark-fill: var(--kiwi);
+  --mark-line: rgba(82, 0, 255, 0.55);
+  --mark-trace: rgba(82, 0, 255, 0.42);
+  --mark-spark: var(--magenta);
 
   /* ---- type ----------------------------------------------------------- */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Display',

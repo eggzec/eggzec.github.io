@@ -71,9 +71,7 @@ export function mountFooter(): void {
         </div>
       </div>
 
-      <div class="site-footer__rule" aria-hidden="true">
-        <canvas data-life-field data-cell="9" data-tps="6" data-density="0.1" data-intensity="0.3" data-interactive="false"></canvas>
-      </div>
+      <div class="site-footer__rule" data-mark-draw="rule" aria-hidden="true"></div>
 
       <div class="site-footer__bottom">
         <p class="mono">© ${ORG.year} ${ORG.name} · ${ORG.tagline}</p>

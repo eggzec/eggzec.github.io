@@ -6,8 +6,8 @@ Live at **https://eggzec.github.io/**.
 
 A hand built static site: Vite and TypeScript, with no UI framework.
 Animation uses [Motion](https://motion.dev) plus
-[Lenis](https://lenis.darkroom.engineering) for smooth scrolling, and a canvas
-Game of Life for the hero texture.
+[Lenis](https://lenis.darkroom.engineering) for smooth scrolling, and an SVG
+build-on of the logo mark for the hero.
 
 ## Layout
 
@@ -21,7 +21,7 @@ public/brand/         logo, project icons
 src/
   main.ts             single entry, mounts whatever a page contains
   data/site.ts        projects and people. Edit content here
-  components/         nav, footer, cards, life field, reveals, marquee
+  components/         nav, footer, cards, mark draw, reveals, marquee
   lib/eggzec-block.ts the eggzec Block bitmap display font, as TypeScript
   styles/             tokens, base, layout, components, pages
 ```
@@ -68,7 +68,7 @@ Colours are the Electropop palette on white:
 | --- | --- |
 | Block fills, buttons, knockouts | Kiwi `#CCFF00` |
 | Accent text and links | Violet `#5200FF` |
-| Sparks and newly born cells | Magenta `#F900FF` |
+| Sparks and the byte cells | Magenta `#F900FF` |
 | Third accent | Orange `#FF6B00` |
 
 Kiwi is brilliant as a field with black on top of it and illegible as type on
@@ -80,9 +80,13 @@ size, so there is no font file and no layout shift. Because the font is
 monospaced, the hero solves for letter tracking per line, which makes every line
 land at the same width and the same cap height.
 
-The hero, footer and 404 page run Conway's Game of Life on a coarse grid. That
-is the same glider hidden in the logo mark. Everything animated respects
-`prefers-reduced-motion`.
+The hero, the call to action panels, the footer rule and the 404 page draw the
+logo mark rather than decorating around it. `src/components/mark-draw.ts` emits
+one SVG: stepped violet traces run in from outside the frame and spark where
+they meet the silhouette, a stack of kiwi bars grows out from the centre line to
+fill the egg, the outline is traced, and the nine magenta byte cells land last.
+It is CSS keyframes with a `--i` index per element, so it plays once, holds, and
+costs nothing after that. Everything animated respects `prefers-reduced-motion`.
 
 ## Deploy
 
