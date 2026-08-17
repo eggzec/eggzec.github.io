@@ -18,12 +18,13 @@ import { mountNav } from './components/nav'
 import { mountFooter } from './components/footer'
 import { mountCounters, mountReveals } from './components/reveal'
 import { mountDisplayType } from './components/wordmark'
-import { mountLifeFields } from './components/life-field'
+import { mountDrawFields } from './components/draw-field'
 import { mountMarquees } from './components/marquee'
 import { mountPixelRules } from './components/pixel-rule'
 import { mountPointerEffects } from './components/pointer'
+import { mountMotes } from './components/motes'
 import { mountFeaturedGrid, mountCatalog } from './components/project-cards'
-import { mountPeople, mountProfile, syncStats } from './components/content'
+import { mountPeople, mountUsedBy, syncStats } from './components/content'
 import { defineEggzecText } from './lib/eggzec-block'
 import { prefersReducedMotion } from './lib/env'
 
@@ -68,17 +69,18 @@ function boot(): void {
   mountFeaturedGrid()
   mountCatalog()
   mountPeople()
-  mountProfile()
+  mountUsedBy()
   syncStats()
   mountDisplayType()
 
   // Behaviour over whatever ended up in the DOM.
-  mountLifeFields()
+  mountDrawFields()
   mountMarquees()
   mountPixelRules()
   mountReveals()
   mountCounters()
   mountPointerEffects()
+  mountMotes()
   mountSmoothScroll()
 
   document.documentElement.dataset.ready = 'true'

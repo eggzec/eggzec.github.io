@@ -27,9 +27,6 @@ export default defineConfig({
         home: r('index.html'),
         projects: r('projects/index.html'),
         community: r('community/index.html'),
-        saud: r('community/saud/index.html'),
-        laraib: r('community/laraib/index.html'),
-        noor: r('community/noor/index.html'),
         notFound: r('404.html'),
       },
       output: {

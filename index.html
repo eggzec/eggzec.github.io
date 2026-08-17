@@ -2,7 +2,7 @@
 <html lang="en">
   <!-- meta: {
     "title": "eggzec · Science + Computing",
-    "description": "eggzec builds open source high performance scientific computing: Fortran and C++ numerical cores wrapped for Python, with uncertainty and optimization tooling published to PyPI.",
+    "description": "eggzec builds open source scientific computing and automation tools: uncertainty, optimization, and numerical methods, free to use and open to contributions.",
     "path": "/"
   } -->
   <head>
@@ -17,9 +17,7 @@
       <!-- ================= HERO ================= -->
       <section class="hero" data-spotlight>
         <div class="hero__grid" aria-hidden="true"></div>
-        <div class="hero__field" aria-hidden="true">
-          <canvas data-life-field data-cell="18" data-tps="8" data-density="0.13" data-intensity="0.42"></canvas>
-        </div>
+        <div class="hero__field" data-draw-field="hero" aria-hidden="true"></div>
 
         <div class="container hero__inner">
           <p class="mono pill hero__eyebrow" data-reveal>
@@ -30,18 +28,16 @@
           <div
             class="display hero__display"
             data-display
-            data-lines="OPEN SOURCE|SCIENTIFIC|COMPUTING"
-            data-knockout="0:3,2:8"
+            data-lines="OPEN SOURCE|SCIENTIFIC|COMPUTING AND|AUTOMATION TOOLS"
+            data-knockout="0:3,3:10"
             role="heading"
             aria-level="1"
-            aria-label="Open source scientific computing"
+            aria-label="Open source scientific computing and automation tools"
           ></div>
 
           <p class="hero__lede" data-reveal data-reveal-delay="220">
-            We build the numerical layer:
-            <strong>Fortran and C++ cores wrapped for Python</strong>, with uncertainty
-            propagation, design of experiments, and optimization on top. Everything is
-            published to PyPI, documented, and tested on every push.
+            <strong>Libraries for people who compute for a living</strong>, and the tools
+            that keep that work moving. All of it open source, and free to use.
           </p>
 
           <div class="button-row hero__actions" data-reveal data-reveal-delay="300">
@@ -58,26 +54,13 @@
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor">
                 <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.89.87 2.35.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.52.56.83 1.28.83 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
               </svg>
-              github.com/eggzec
+              GitHub
             </a>
           </div>
 
           <div class="hero__ticker" data-reveal data-reveal-delay="380">
-            <p class="mono hero__ticker-label">Shipping</p>
-            <div class="hero__ticker-strip" data-marquee data-speed="34">
-              <span class="mono">pyswarm</span>
-              <span class="mono">pydoe</span>
-              <span class="mono">mcerp</span>
-              <span class="mono">soerp</span>
-              <span class="mono">ad</span>
-              <span class="mono">nlpql</span>
-              <span class="mono">smolpack</span>
-              <span class="mono">sdepack</span>
-              <span class="mono">ogrep</span>
-              <span class="mono">polpack</span>
-              <span class="mono">kronrod</span>
-              <span class="mono">vatic</span>
-            </div>
+            <p class="mono hero__ticker-label">Used by</p>
+            <div class="hero__ticker-strip" data-marquee data-speed="34" data-used-by></div>
           </div>
         </div>
       </section>
@@ -115,8 +98,8 @@
             <p class="mono section__eyebrow">Projects</p>
             <h2 class="section__title">Tools we needed, so we wrote them</h2>
             <p class="section__lede">
-              Every project below is a repository you can clone today. Most ship a package, a
-              documentation site, and a CI pipeline that runs the tests on every push.
+              Every project below is a repository you can clone today, and a package you can
+              install.
             </p>
           </header>
 
@@ -133,68 +116,37 @@
         <div class="container">
           <header class="section__head" data-reveal>
             <p class="mono section__eyebrow">How we work</p>
-            <h2 class="section__title">Fast where it matters, readable everywhere else</h2>
+            <h2 class="section__title">Open, and kept that way</h2>
           </header>
 
           <div class="pillars" data-reveal-group data-reveal-stagger="70">
             <article class="pillar">
               <p class="mono pillar__index">01</p>
-              <h3 class="pillar__title">Native cores, Python surface</h3>
+              <h3 class="pillar__title">Open by default</h3>
               <p class="pillar__body">
-                Quadrature, linear algebra, and special functions stay in Fortran and C++. The API
-                you import is Python, built with f2py, SIP, and Meson.
+                Every repository is public and takes issues and pull requests. The way in is the
+                same one we use ourselves.
               </p>
             </article>
 
             <article class="pillar">
               <p class="mono pillar__index">02</p>
-              <h3 class="pillar__title">Uncertainty is first class</h3>
+              <h3 class="pillar__title">Kept alive</h3>
               <p class="pillar__body">
-                Propagate error by moments, by Monte Carlo, or by derivative. mcerp, soerp, and ad
-                cover all three against the same modelling code.
+                Projects stay released and documented for as long as people depend on them. Work
+                we no longer maintain is retired rather than left looking current.
               </p>
             </article>
 
             <article class="pillar">
               <p class="mono pillar__index">03</p>
-              <h3 class="pillar__title">Published, not parked</h3>
+              <h3 class="pillar__title">Used in the wild</h3>
               <p class="pillar__body">
-                Packages go to PyPI with a versioned docs site, Ruff and pytest in CI, and coverage
-                reported on the pull request that changed it.
+                National labs, universities, and industry build on these packages. Every name we
+                list links to the repository that does.
               </p>
             </article>
           </div>
-        </div>
-      </section>
-
-      <!-- ================= TOOLCHAIN ================= -->
-      <section class="section section--ruled">
-        <div class="container">
-          <header class="section__head" data-reveal>
-            <p class="mono section__eyebrow">Toolchain</p>
-            <h2 class="section__title">What we build with</h2>
-            <p class="section__lede">
-              uv for environments, Meson and CMake for native builds, Ruff and pytest for the gate,
-              Zensical and Doxygen for the docs.
-            </p>
-          </header>
-        </div>
-
-        <div data-marquee data-speed="46" data-reveal>
-          <span class="tool"><span class="tool__mark">Py</span><span>Python</span></span>
-          <span class="tool"><span class="tool__mark">F</span><span>Fortran</span></span>
-          <span class="tool"><span class="tool__mark">C++</span><span>C++</span></span>
-          <span class="tool"><span class="tool__mark">Go</span><span>Go</span></span>
-          <span class="tool"><span class="tool__mark">J</span><span>Java</span></span>
-          <span class="tool"><span class="tool__mark">Np</span><span>NumPy</span></span>
-          <span class="tool"><span class="tool__mark">Sp</span><span>SciPy</span></span>
-          <span class="tool"><span class="tool__mark">uv</span><span>uv</span></span>
-          <span class="tool"><span class="tool__mark">Rf</span><span>Ruff</span></span>
-          <span class="tool"><span class="tool__mark">M</span><span>Meson</span></span>
-          <span class="tool"><span class="tool__mark">pt</span><span>pytest</span></span>
-          <span class="tool"><span class="tool__mark">Qt</span><span>Qt</span></span>
-          <span class="tool"><span class="tool__mark">Dk</span><span>Docker</span></span>
-          <span class="tool"><span class="tool__mark">Zn</span><span>Zensical</span></span>
         </div>
       </section>
 
@@ -207,8 +159,8 @@
             <p class="mono section__eyebrow">Community</p>
             <h2 class="section__title">Small group, long horizon</h2>
             <p class="section__lede">
-              eggzec is maintained by three engineers working across Python, C++, Fortran, Java, and
-              Go. Issues and pull requests are welcome on every repository.
+              eggzec is maintained by a small group of engineers, in the open. Issues and pull
+              requests are welcome on every repository.
             </p>
           </header>
 
@@ -222,9 +174,7 @@
       <section class="section">
         <div class="container">
           <div class="cta" data-reveal>
-            <div class="cta__field" aria-hidden="true">
-              <canvas data-life-field data-cell="14" data-tps="7" data-density="0.14" data-intensity="0.4" data-interactive="false"></canvas>
-            </div>
+            <div class="cta__field" data-draw-field="panel" aria-hidden="true"></div>
             <div class="cta__inner">
               <h2 class="cta__title">Start with a repository</h2>
               <p class="cta__body">
@@ -252,5 +202,7 @@
 
     <footer data-footer></footer>
     <script type="module" src="/src/main.ts"></script>
+
+
   </body>
 </html>

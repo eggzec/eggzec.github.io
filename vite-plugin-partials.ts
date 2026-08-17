@@ -25,7 +25,7 @@ const DEFAULTS: Record<string, string> = {
   path: '/',
   title: 'eggzec · Science + Computing',
   description:
-    'eggzec builds open source high performance scientific computing: Fortran and C++ numerical cores wrapped for Python.',
+    'eggzec builds open source scientific computing and automation tools.',
 }
 
 const META_RE = /<!--\s*meta:\s*(\{[\s\S]*?\})\s*-->/

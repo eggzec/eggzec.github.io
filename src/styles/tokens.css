@@ -51,10 +51,16 @@
   --spark: var(--magenta);
   --heat: var(--orange);
 
-  /* Life field: kiwi disappears on white, so the automaton runs in violet
-     and flashes magenta on birth. */
-  --field-live: var(--violet);
-  --field-born: var(--magenta);
+  /* Draw field: the nabla fills in kiwi the way blocks do in the logo, and
+     every line that draws it is violet, because kiwi cannot hold a hairline on
+     white. Iterates and lit bits spark magenta; samples on the residual curve
+     take the orange so all four hues are in play. */
+  --mark-fill: var(--kiwi);
+  --mark-line: rgba(82, 0, 255, 0.55);
+  --mark-trace: rgba(82, 0, 255, 0.4);
+  --mark-text: rgba(82, 0, 255, 0.5);
+  --mark-spark: var(--magenta);
+  --mark-heat: var(--orange);
 
   /* ---- type ----------------------------------------------------------- */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Display',
