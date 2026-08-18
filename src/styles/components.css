@@ -863,15 +863,20 @@
 .used-by {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 1.15rem;
+  padding: 0.4rem 1.35rem;
 }
 
+/*
+ * Every logo is delivered at one height, so the strip needs a single `height`
+ * here and nothing else. The width cap is for the occasional wordmark that is
+ * much wider than it is tall.
+ */
 .used-by__logo {
   width: auto;
-  height: 52px;
-  max-width: 170px;
+  height: 68px;
+  max-width: 210px;
   object-fit: contain;
-  opacity: 0.55;
+  opacity: 0.62;
   transition: opacity var(--dur-base) var(--ease-out);
 }
 
