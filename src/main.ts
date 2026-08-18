@@ -19,12 +19,11 @@ import { mountFooter } from './components/footer'
 import { mountCounters, mountReveals } from './components/reveal'
 import { mountDisplayType } from './components/wordmark'
 import { mountDrawFields } from './components/draw-field'
-import { mountMarquees } from './components/marquee'
 import { mountPixelRules } from './components/pixel-rule'
 import { mountPointerEffects } from './components/pointer'
 import { mountMotes } from './components/motes'
 import { mountFeaturedGrid, mountCatalog } from './components/project-cards'
-import { mountPeople, mountUsedBy, syncStats } from './components/content'
+import { mountPeople, syncStats } from './components/content'
 import { defineEggzecText } from './lib/eggzec-block'
 import { prefersReducedMotion } from './lib/env'
 
@@ -69,13 +68,11 @@ function boot(): void {
   mountFeaturedGrid()
   mountCatalog()
   mountPeople()
-  mountUsedBy()
   syncStats()
   mountDisplayType()
 
   // Behaviour over whatever ended up in the DOM.
   mountDrawFields()
-  mountMarquees()
   mountPixelRules()
   mountReveals()
   mountCounters()

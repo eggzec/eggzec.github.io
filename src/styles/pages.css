@@ -110,25 +110,6 @@
   margin-top: var(--space-2);
 }
 
-.hero__ticker {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  margin-top: var(--space-6);
-  padding-top: var(--space-6);
-  border-top: var(--border) solid var(--line);
-}
-
-.hero__ticker-label {
-  flex: 0 0 auto;
-  color: var(--ink-faint);
-}
-
-.hero__ticker-strip {
-  min-width: 0;
-  flex: 1;
-}
-
 /* ---- install strip ------------------------------------------------------ */
 
 .install {

@@ -4,7 +4,6 @@
  */
 
 import { PEOPLE, PROJECTS } from '../data/site'
-import { USED_BY } from '../data/used-by'
 
 /**
  * `<div data-people>` on /community/.
@@ -29,28 +28,6 @@ export function mountPeople(root: ParentNode = document): void {
       </div>
       <p class="person__bio">${person.bio}</p>
     </article>`,
-  ).join('')
-}
-
-/**
- * `<div data-used-by>` in the hero ticker.
- *
- * Logos rather than names: at a glance a reader recognises a mark faster than
- * they read an org login. Filled before the marquee mounts so it measures real
- * content, and each one links to the repository the dependency was verified in,
- * because a claim like this is only worth making if it can be checked.
- */
-export function mountUsedBy(root: ParentNode = document): void {
-  const host = root.querySelector<HTMLElement>('[data-used-by]')
-  if (!host) return
-
-  host.innerHTML = USED_BY.map(
-    (d) => `
-      <a class="used-by" href="https://github.com/${d.repo}" target="_blank" rel="noopener"
-         title="${d.name} uses ${d.uses} in ${d.repo}">
-        <img class="used-by__logo" src="/brand/users/${d.login.toLowerCase()}.png"
-             alt="${d.name}" height="68" loading="lazy" decoding="async">
-      </a>`,
   ).join('')
 }
 
