@@ -110,12 +110,6 @@ export const PROJECTS: Project[] = [
     pypi: 'nlpql',
     icon: 'nlpql.svg',
   },
-  {
-    name: 'PyOpt',
-    tagline: 'Nonlinear constrained optimization behind one interface over several solvers',
-    category: 'Optimization',
-    github: gh('PyOpt'),
-  },
 
   // ---- Numerics ---------------------------------------------------------
   {
