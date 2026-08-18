@@ -21,7 +21,7 @@ public/brand/         logo, project icons
 src/
   main.ts             single entry, mounts whatever a page contains
   data/site.ts        projects and people. Edit content here
-  components/         nav, footer, cards, mark draw, reveals, marquee
+  components/         nav, footer, cards, mark draw, reveals
   lib/eggzec-block.ts the eggzec Block bitmap display font, as TypeScript
   styles/             tokens, base, layout, components, pages
 ```
@@ -49,7 +49,6 @@ Almost everything is data rather than markup, and it all lives in
 | Projects, taglines, repository and docs and PyPI links | `PROJECTS` |
 | Human facing name when the repo name is not one | `display` on a project |
 | Which projects lead the landing page | `LEAD` in `src/data/site.ts` |
-| Who builds on our packages | `src/data/used-by.ts` |
 | Maintainers | `PEOPLE` |
 | Nav links | `NAV` |
 | Footer links | `COLUMNS` in `src/components/footer.ts` |
@@ -63,12 +62,6 @@ card appears twice.
 
 Landing page statistics are counted from the catalog at runtime, so the numbers
 cannot drift from what is actually listed.
-
-`src/data/used-by.ts` is the one generated file. It comes from GitHub's
-dependency graph — the `network/dependents` listing for each repository —
-filtered to named organisations and checked one at a time against the API. Only
-pydoe, pyswarm, mcerp and soerp have any dependents, so that is what the list
-draws on. Regenerate it by hand rather than trusting it to stay current.
 
 ## Design
 
