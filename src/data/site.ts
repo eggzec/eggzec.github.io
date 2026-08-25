@@ -192,6 +192,7 @@ export const PROJECTS: Project[] = [
     github: gh('brayer'),
     docs: eggzecDocs('brayer'),
     pypi: 'brayer',
+    icon: 'brayer.svg',
   },
 ]
 
