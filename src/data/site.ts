@@ -110,6 +110,16 @@ export const PROJECTS: Project[] = [
     pypi: 'nlpql',
     icon: 'nlpql.svg',
   },
+  {
+    name: 'smopt',
+    display: 'SmOpt',
+    tagline: 'Penalty free first order solvers for optimization on the Stiefel manifold',
+    category: 'Optimization',
+    github: gh('smopt'),
+    docs: eggzecDocs('smopt'),
+    pypi: 'smopt',
+    icon: 'smopt.svg',
+  },
 
   // ---- Numerics ---------------------------------------------------------
   {
@@ -174,6 +184,15 @@ export const PROJECTS: Project[] = [
     github: gh('gnspy'),
     pypi: 'gnspy',
     icon: 'gnspy.svg',
+  },
+  {
+    name: 'brayer',
+    tagline: 'Desktop forms built from Pydantic models, with widgets chosen from the field types',
+    category: 'Tooling',
+    github: gh('brayer'),
+    docs: eggzecDocs('brayer'),
+    pypi: 'brayer',
+    icon: 'brayer.svg',
   },
 ]
 
