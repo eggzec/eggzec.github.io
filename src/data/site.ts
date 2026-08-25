@@ -116,6 +116,9 @@ export const PROJECTS: Project[] = [
     tagline: 'Penalty free first order solvers for optimization on the Stiefel manifold',
     category: 'Optimization',
     github: gh('smopt'),
+    docs: eggzecDocs('smopt'),
+    pypi: 'smopt',
+    icon: 'smopt.svg',
   },
 
   // ---- Numerics ---------------------------------------------------------
