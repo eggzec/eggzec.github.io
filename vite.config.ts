@@ -27,6 +27,7 @@ export default defineConfig({
         home: r('index.html'),
         projects: r('projects/index.html'),
         community: r('community/index.html'),
+        trustedBy: r('trusted-by/index.html'),
         notFound: r('404.html'),
       },
       output: {

@@ -24,6 +24,7 @@ import { mountPointerEffects } from './components/pointer'
 import { mountMotes } from './components/motes'
 import { mountFeaturedGrid, mountCatalog } from './components/project-cards'
 import { mountPeople, syncStats } from './components/content'
+import { mountLogoCarousels, mountUserStats, mountUserStories } from './components/users'
 import { defineEggzecText } from './lib/eggzec-block'
 import { prefersReducedMotion } from './lib/env'
 
@@ -68,6 +69,9 @@ function boot(): void {
   mountFeaturedGrid()
   mountCatalog()
   mountPeople()
+  mountUserStats()
+  mountUserStories()
+  mountLogoCarousels()
   syncStats()
   mountDisplayType()
 
