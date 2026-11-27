@@ -948,3 +948,104 @@
   border-radius: 2px;
   background: var(--accent-fill);
 }
+
+/* ---- logo carousel ------------------------------------------------------ */
+
+/* Modelled on github.com's customer row: one line of monochrome marks moving
+   slowly left, faded at both edges, with a pause control at the end. The track
+   holds the list twice and slides by exactly one copy, so the loop is seamless
+   whatever the logos' widths. */
+.logo-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.logo-carousel__viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.logo-carousel__track {
+  --carousel-duration: 160s;
+  display: flex;
+  width: max-content;
+  animation: logo-carousel-scroll var(--carousel-duration) linear infinite;
+}
+
+.logo-carousel[data-paused='true'] .logo-carousel__track,
+.logo-carousel__viewport:hover .logo-carousel__track,
+.logo-carousel__viewport:focus-within .logo-carousel__track {
+  animation-play-state: paused;
+}
+
+.logo-carousel__group {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logo-carousel__item {
+  flex: 0 0 auto;
+}
+
+.logo-carousel__item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 128px;
+  padding-inline: 3rem;
+}
+
+/* Grey until pointed at, as on GitHub: a row of brand colours fights the page,
+   and a mark is recognised by its shape. Hover only changes colour, never size
+   or position, because the row is moving. */
+.logo-carousel__item img {
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.55;
+  transition:
+    filter var(--dur-base) var(--ease-out),
+    opacity var(--dur-base) var(--ease-out);
+  user-select: none;
+}
+
+.logo-carousel__item a:hover img,
+.logo-carousel__item a:focus-visible img {
+  filter: none;
+  opacity: 1;
+}
+
+
+
+@keyframes logo-carousel-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---- optical logo box (lib/logo-fit.ts) --------------------------------- */
+
+/* Cut to the logo's ink: the image is sized and offset inside it so padding
+   and white backgrounds fall outside the box. */
+.logo-fit {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.logo-fit img {
+  display: block;
+  max-width: none;
+}

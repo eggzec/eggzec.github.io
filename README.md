@@ -16,13 +16,17 @@ index.html            landing page
 404.html              custom not found page
 projects/             full project catalog, filterable by category
 community/            maintainers
+trusted-by/           organisations that build on our packages
 partials/head.html    shared <head>, injected at build time
-public/brand/         logo, project icons
+public/brand/         logo, project icons, organisation logos (users/)
 src/
   main.ts             single entry, mounts whatever a page contains
   data/site.ts        projects and people. Edit content here
-  components/         nav, footer, cards, mark draw, reveals
+  data/users.ts       Trusted By stories and the landing-page logo strip
+  data/users-pydoe.ts stories generated from the pydoe "Who uses PyDOE?" page
+  components/         nav, footer, cards, mark draw, reveals, logo strip
   lib/eggzec-block.ts the eggzec Block bitmap display font, as TypeScript
+  lib/logo-fit.ts     sizes organisation logos to one optical weight
   styles/             tokens, base, layout, components, pages
 ```
 

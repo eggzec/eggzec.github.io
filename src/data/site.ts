@@ -224,6 +224,7 @@ export interface NavItem {
 export const NAV: NavItem[] = [
   { label: 'Projects', href: '/projects/', menu: NAV_MENU },
   { label: 'Community', href: '/community/' },
+  { label: 'Trusted By', href: '/trusted-by/' },
 ]
 
 export const ORG = {

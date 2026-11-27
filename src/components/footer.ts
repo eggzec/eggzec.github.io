@@ -16,7 +16,10 @@ const COLUMNS: Array<{ title: string; links: Array<{ label: string; href: string
   },
   {
     title: 'Community',
-    links: [{ label: 'Maintainers', href: '/community/' }],
+    links: [
+      { label: 'Maintainers', href: '/community/' },
+      { label: 'Trusted By', href: '/trusted-by/' },
+    ],
   },
   {
     title: 'Elsewhere',

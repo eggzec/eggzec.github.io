@@ -496,3 +496,161 @@
 .lead-links a:hover {
   color: var(--accent-text);
 }
+
+/* ---- used by (landing) -------------------------------------------------- */
+
+.used-by {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+
+.used-by__label {
+  color: var(--ink-faint);
+}
+
+
+
+
+/* ---- /users/ ------------------------------------------------------------ */
+
+.user-stats {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.stat--lead {
+  background: var(--accent-fill);
+  border-color: var(--accent-fill);
+}
+
+.stat--lead .stat__value {
+  color: var(--accent-on);
+}
+
+.stat--lead .stat__label {
+  color: var(--accent-on);
+}
+
+.stat--link {
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.stat--link:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+}
+
+.stories {
+  display: flex;
+  flex-direction: column;
+}
+
+.story {
+  display: grid;
+  grid-template-columns: minmax(0, 390px) minmax(0, 1fr);
+  gap: var(--space-5) clamp(var(--space-5), 4vw, var(--space-8));
+  padding-block: var(--space-7);
+  border-top: var(--border) solid var(--line);
+  scroll-margin-top: calc(var(--nav-h) + var(--space-5));
+}
+
+.story:target {
+  border-top-color: var(--accent-text);
+  box-shadow: inset 0 3px 0 var(--kiwi);
+}
+
+/* A group's mark beside its institution's, wrapping when they run out of
+   room. Sizes come from lib/logo-fit.ts, so every mark reads at the same
+   optical size. */
+.story__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  gap: var(--space-5) var(--space-6);
+}
+
+/* For the few stories whose marks read better one per row. */
+.story__logos--stacked {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.story__logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.story__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 76ch;
+}
+
+.story__body {
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  color: var(--ink-muted);
+}
+
+.story__body strong {
+  color: var(--ink);
+  font-weight: 620;
+}
+
+.story__body em {
+  color: var(--ink);
+  font-style: normal;
+}
+
+.story__body code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  padding: 0.08em 0.36em;
+  border-radius: var(--radius-sm);
+  background: var(--bg-sunken);
+  color: var(--accent-text);
+}
+
+.story__sources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.story__sources-label {
+  color: var(--ink-faint);
+}
+
+.story__sources ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.story__sources a {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  word-break: break-word;
+}
+
+.story__sources a:hover {
+  color: var(--accent-text);
+}
+
+@media (max-width: 760px) {
+  .story {
+    grid-template-columns: 1fr;
+  }
+}
